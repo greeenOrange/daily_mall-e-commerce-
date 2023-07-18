@@ -1,0 +1,28 @@
+/* .card_warpper {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: var(--size-900);
+} */
+.primary_card {
+    width: 190px;
+    background: var(--white);
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.primary_card img {
+    width: 100%;
+}
+.primary_card_body{
+    padding: 1rem;
+}
+.card_btn{
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+@media (min-width: 50em) {
+    .card_warpper {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: var(--size-900);
+    }
+}

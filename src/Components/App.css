@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500&family=Poppins:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --white: #ffffff;
+  --off-white: #E9EFFE;
+  --sky-blue-1: #3072B7;
+  --sky-blue-2: #2666AD;
+  --sky-blue-3: #3072B7;
+  --sky-blue-4: #6494E5;
+  --sky-blue-4: #5065E4;
+  --blue-1: #001E6C;
+  --blue-2: #0E276A;
+  --navy-blue: #021546;
+  --orange: #EE8900;
+  --gold: #F6B51D;
+  --bright-red: #FF5555;
+  --gray-1: #999999;
+  --gray-2: #666666;
+  --black-1: #000000;
+  --black-2: #1E1E1E;
+
+  --size-100: 0.25rem;
+  /* 4px */
+  --size-200: 0.5rem;
+  /* 8px */
+  --size-300: 0.75rem;
+  /* 12px */
+  --size-400: 0.875rem;
+  /* 14px */
+  --size-500: 1rem;
+  /* 16px */
+  --size-600: 1.125rem;
+  /* 18px */
+  --size-700: 1.375rem;
+  /* 22px */
+  --size-800: 1.5rem;
+  /* 24px */
+  --size-900: 1.875rem;
+  /* 30px */
+
+  --font-primary: 'Poppins', sans-serif;
+  --font-secondary: 'Outfit', sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+  font-family: var(--font-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+ul[role="list"],
+ol[role="list"],
+li {
+  list-style: none;
+}
+
+img,
+picture,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+}
+
+svg,
+img {
+  vertical-align: middle;
+}
+
+button {
+  border: 0;
+  background-color: transparent;
+  cursor: auto;
+}
+
+input,
+textarea,
+select {
+  border: 0;
+}
+
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+button:focus-visible {
+  outline: none;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.container {
+  --max-width: 1366px;
+  --container-padding: 1rem;
+  width: min(var(--max-width), 100% - (var(--container-padding) * 2));
+  margin-inline: auto;
+}
+
+.btn {
+  font-family: var(--font-secondary);
+  font-weight: 500;
+}
+
+.scroll_bar {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}

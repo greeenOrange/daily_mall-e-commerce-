@@ -1,0 +1,21 @@
+.top_bar{
+    background: #F4F4F4;
+}
+.dark_top_bar{
+    background: #212c3d;
+}
+.phone {
+    color: var(--black-1);
+    font-size: 1.4rem;
+}
+.phone span{
+    margin-right: var(--size-300);
+}
+.space_between{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.menu li{
+    font-size: 1.6rem;
+}
