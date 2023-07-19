@@ -14,14 +14,18 @@ function Products() {
                     <div className="primary_card_body">
                         <h3 className="card_title">The school of life - emotional baggage tote.
                         </h3>
+                        <div className="card_rating_price">
                         <div className="rating">
                             <FontAwesomeIcon icon={faStar} />
                             <FontAwesomeIcon icon={faStar} />
                             <FontAwesomeIcon icon={faStar} />
                             <FontAwesomeIcon icon={faStarHalf} />
                         </div>
-                        <h6 className="strikeout flex-none">$40</h6>
+                        <div className="card_price">
+                        <h6 className="strikeout">$40</h6>
                         <h4 className="price">$20</h4>
+                        </div>
+                        </div>
                         <button className="add_to_cart card-btn">
                             Add to cart
                             <span className="circle"><FontAwesomeIcon icon={faPlus} /></span>
@@ -33,14 +37,18 @@ function Products() {
                     <div className="primary_card_body">
                         <h3 className="card_title">The school of life - emotional baggage tote.
                         </h3>
+                        <div className="card_rating_price">
                         <div className="rating">
                             <FontAwesomeIcon icon={faStar} />
                             <FontAwesomeIcon icon={faStar} />
                             <FontAwesomeIcon icon={faStar} />
                             <FontAwesomeIcon icon={faStarHalf} />
                         </div>
-                        <h6 className="strikeout flex-none">$40</h6>
+                        <div className="card_price">
+                        <h6 className="strikeout">$40</h6>
                         <h4 className="price">$20</h4>
+                        </div>
+                        </div>
                         <button className="add_to_cart card-btn">
                             Add to cart
                             <span className="circle"><FontAwesomeIcon icon={faPlus} /></span>
@@ -52,14 +60,18 @@ function Products() {
                     <div className="primary_card_body">
                         <h3 className="card_title">The school of life - emotional baggage tote.
                         </h3>
+                        <div className="card_rating_price">
                         <div className="rating">
                             <FontAwesomeIcon icon={faStar} />
                             <FontAwesomeIcon icon={faStar} />
                             <FontAwesomeIcon icon={faStar} />
                             <FontAwesomeIcon icon={faStarHalf} />
                         </div>
-                        <h6 className="strikeout flex-none">$40</h6>
+                        <div className="card_price">
+                        <h6 className="strikeout">$40</h6>
                         <h4 className="price">$20</h4>
+                        </div>
+                        </div>
                         <button className="add_to_cart card-btn">
                             Add to cart
                             <span className="circle"><FontAwesomeIcon icon={faPlus} /></span>
@@ -71,14 +83,18 @@ function Products() {
                     <div className="primary_card_body">
                         <h3 className="card_title">The school of life - emotional baggage tote.
                         </h3>
+                        <div className="card_rating_price">
                         <div className="rating">
                             <FontAwesomeIcon icon={faStar} />
                             <FontAwesomeIcon icon={faStar} />
                             <FontAwesomeIcon icon={faStar} />
                             <FontAwesomeIcon icon={faStarHalf} />
                         </div>
-                        <h6 className="strikeout flex-none">$40</h6>
+                        <div className="card_price">
+                        <h6 className="strikeout">$40</h6>
                         <h4 className="price">$20</h4>
+                        </div>
+                        </div>
                         <button className="add_to_cart card-btn">
                             Add to cart
                             <span className="circle"><FontAwesomeIcon icon={faPlus} /></span>
@@ -90,14 +106,18 @@ function Products() {
                     <div className="primary_card_body">
                         <h3 className="card_title">The school of life - emotional baggage tote.
                         </h3>
+                        <div className="card_rating_price">
                         <div className="rating">
                             <FontAwesomeIcon icon={faStar} />
                             <FontAwesomeIcon icon={faStar} />
                             <FontAwesomeIcon icon={faStar} />
                             <FontAwesomeIcon icon={faStarHalf} />
                         </div>
-                        <h6 className="strikeout flex-none">$40</h6>
+                        <div className="card_price">
+                        <h6 className="strikeout">$40</h6>
                         <h4 className="price">$20</h4>
+                        </div>
+                        </div>
                         <button className="add_to_cart card-btn">
                             Add to cart
                             <span className="circle"><FontAwesomeIcon icon={faPlus} /></span>
@@ -109,20 +129,25 @@ function Products() {
                     <div className="primary_card_body">
                         <h3 className="card_title">The school of life - emotional baggage tote.
                         </h3>
+                        <div className="card_rating_price">
                         <div className="rating">
                             <FontAwesomeIcon icon={faStar} />
                             <FontAwesomeIcon icon={faStar} />
                             <FontAwesomeIcon icon={faStar} />
                             <FontAwesomeIcon icon={faStarHalf} />
                         </div>
-                        <h6 className="strikeout flex-none">$40</h6>
+                        <div className="card_price">
+                        <h6 className="strikeout">$40</h6>
                         <h4 className="price">$20</h4>
+                        </div>
+                        </div>
                         <button className="add_to_cart card-btn">
                             Add to cart
                             <span className="circle"><FontAwesomeIcon icon={faPlus} /></span>
                         </button>
                     </div>
                 </div>
+                
                 </div>
                 <button className="btn card_btn">view all</button>
             </div>
