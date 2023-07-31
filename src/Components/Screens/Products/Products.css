@@ -24,8 +24,17 @@
     align-items: flex-end;
     justify-content: flex-end;
 }
-.card_btn{
-    align-self: center;
+.view_all {
+    margin: 1.5rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.view_all .card_btn{
+    color: var(--gold);
+    font-size: 1.8rem;
+    font-weight: 400;
+    line-height: var(--size-900);
 }
 @media (min-width: 50em) {
     .card_warpper {

@@ -1,155 +1,54 @@
 import 'react';
-import { faPlus, faStar, faStarHalf } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import './Products.css';
-import product1 from '../../../assets/products/img.png';
+
+import { useEffect, useState } from 'react';
+import Product from '../Product/Product';
 
 function Products() {
+    const [products, setProducts] = useState([]);
+    const [error, setError] = useState('');
+    const [isLoading, setIsLoading] = useState(true);
+    const data = [...products]
+    const sliceData = data.slice(0, 12)
+    useEffect(() => {
+        fetch('/fakedb.json')
+            .then((response) => response.json())
+            .then((data) => {
+                setProducts(data.products);
+                setError(null);
+            })
+            .catch((err) => {
+                setError(err.message);
+                setProducts(null);
+            })
+            .finally(() => {
+                setIsLoading(false);
+            });
+    }, []);
     return (
         <section className="product">
             <div className="container">
                 <div className="card_warpper">
-                <div className="primary_card">
-                    <img src={product1} alt="" />
-                    <div className="primary_card_body">
-                        <h3 className="card_title">The school of life - emotional baggage tote.
-                        </h3>
-                        <div className="card_rating_price">
-                        <div className="rating">
-                            <FontAwesomeIcon icon={faStar} />
-                            <FontAwesomeIcon icon={faStar} />
-                            <FontAwesomeIcon icon={faStar} />
-                            <FontAwesomeIcon icon={faStarHalf} />
-                        </div>
-                        <div className="card_price">
-                        <h6 className="strikeout">$40</h6>
-                        <h4 className="price">$20</h4>
-                        </div>
-                        </div>
-                        <button className="add_to_cart card-btn">
-                            Add to cart
-                            <span className="circle"><FontAwesomeIcon icon={faPlus} /></span>
-                        </button>
-                    </div>
+                    {
+                        isLoading &&  <span className="loading loading-ring loading-lg text-center"></span>
+                    }
+                    {
+                        error && <div className="alert alert-error">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        <span>Error! Task failed successfully.</span>
+                      </div>
+                    }
+                    {sliceData &&
+                        sliceData.map(product => (
+                            <Product 
+                            product={product}
+                            key={product.id}
+                            />
+
+                        )
+                            
+                        )}
                 </div>
-                <div className="primary_card">
-                    <img src={product1} alt="" />
-                    <div className="primary_card_body">
-                        <h3 className="card_title">The school of life - emotional baggage tote.
-                        </h3>
-                        <div className="card_rating_price">
-                        <div className="rating">
-                            <FontAwesomeIcon icon={faStar} />
-                            <FontAwesomeIcon icon={faStar} />
-                            <FontAwesomeIcon icon={faStar} />
-                            <FontAwesomeIcon icon={faStarHalf} />
-                        </div>
-                        <div className="card_price">
-                        <h6 className="strikeout">$40</h6>
-                        <h4 className="price">$20</h4>
-                        </div>
-                        </div>
-                        <button className="add_to_cart card-btn">
-                            Add to cart
-                            <span className="circle"><FontAwesomeIcon icon={faPlus} /></span>
-                        </button>
-                    </div>
-                </div>
-                <div className="primary_card">
-                    <img src={product1} alt="" />
-                    <div className="primary_card_body">
-                        <h3 className="card_title">The school of life - emotional baggage tote.
-                        </h3>
-                        <div className="card_rating_price">
-                        <div className="rating">
-                            <FontAwesomeIcon icon={faStar} />
-                            <FontAwesomeIcon icon={faStar} />
-                            <FontAwesomeIcon icon={faStar} />
-                            <FontAwesomeIcon icon={faStarHalf} />
-                        </div>
-                        <div className="card_price">
-                        <h6 className="strikeout">$40</h6>
-                        <h4 className="price">$20</h4>
-                        </div>
-                        </div>
-                        <button className="add_to_cart card-btn">
-                            Add to cart
-                            <span className="circle"><FontAwesomeIcon icon={faPlus} /></span>
-                        </button>
-                    </div>
-                </div>
-                <div className="primary_card">
-                    <img src={product1} alt="" />
-                    <div className="primary_card_body">
-                        <h3 className="card_title">The school of life - emotional baggage tote.
-                        </h3>
-                        <div className="card_rating_price">
-                        <div className="rating">
-                            <FontAwesomeIcon icon={faStar} />
-                            <FontAwesomeIcon icon={faStar} />
-                            <FontAwesomeIcon icon={faStar} />
-                            <FontAwesomeIcon icon={faStarHalf} />
-                        </div>
-                        <div className="card_price">
-                        <h6 className="strikeout">$40</h6>
-                        <h4 className="price">$20</h4>
-                        </div>
-                        </div>
-                        <button className="add_to_cart card-btn">
-                            Add to cart
-                            <span className="circle"><FontAwesomeIcon icon={faPlus} /></span>
-                        </button>
-                    </div>
-                </div>
-                <div className="primary_card">
-                    <img src={product1} alt="" />
-                    <div className="primary_card_body">
-                        <h3 className="card_title">The school of life - emotional baggage tote.
-                        </h3>
-                        <div className="card_rating_price">
-                        <div className="rating">
-                            <FontAwesomeIcon icon={faStar} />
-                            <FontAwesomeIcon icon={faStar} />
-                            <FontAwesomeIcon icon={faStar} />
-                            <FontAwesomeIcon icon={faStarHalf} />
-                        </div>
-                        <div className="card_price">
-                        <h6 className="strikeout">$40</h6>
-                        <h4 className="price">$20</h4>
-                        </div>
-                        </div>
-                        <button className="add_to_cart card-btn">
-                            Add to cart
-                            <span className="circle"><FontAwesomeIcon icon={faPlus} /></span>
-                        </button>
-                    </div>
-                </div>
-                <div className="primary_card">
-                    <img src={product1} alt="" />
-                    <div className="primary_card_body">
-                        <h3 className="card_title">The school of life - emotional baggage tote.
-                        </h3>
-                        <div className="card_rating_price">
-                        <div className="rating">
-                            <FontAwesomeIcon icon={faStar} />
-                            <FontAwesomeIcon icon={faStar} />
-                            <FontAwesomeIcon icon={faStar} />
-                            <FontAwesomeIcon icon={faStarHalf} />
-                        </div>
-                        <div className="card_price">
-                        <h6 className="strikeout">$40</h6>
-                        <h4 className="price">$20</h4>
-                        </div>
-                        </div>
-                        <button className="add_to_cart card-btn">
-                            Add to cart
-                            <span className="circle"><FontAwesomeIcon icon={faPlus} /></span>
-                        </button>
-                    </div>
-                </div>
-                
-                </div>
-                <button className="btn card_btn">view all</button>
+                <div className="view_all"><button className="btn card_btn">view all</button></div>
             </div>
         </section>
     )
