@@ -4,13 +4,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import product1 from '../../../assets/products/img.png';
 
 import '../products/products.css';
+import { Link } from 'react-router-dom';
 
-const Product = ({product}) => {
-    const {name, price, description} = product;
-    console.log(product);
+const Product = ({ product }) => {
+    const {name, price, } = product;
     return (
         <div className="primary_card">
-            <img src={product1} alt="" />
+            <Link to='/productDetails'><img src={product1} alt="" /></Link>
             <div className="primary_card_body">
                 <h3 className="card_title">{name}
                 </h3>
