@@ -49,18 +49,20 @@ function ShoppingCart() {
                         {checkQuantity(state, pd.id) > 1 ?
                           <button onClick={() =>
                             dispatch({ type: "DECREASE", payload: pd })
-                          } className="cart_plus">-</button>
+                          } className="btn cart_plus">-</button>
                           : <button
-                            className="cart_plus btn-disabled" tabIndex="-1" role="button" aria-disabled="true">-</button>
+                            className="btn cart_plus btn-disabled" tabIndex="-1" role="button" aria-disabled="true">-</button>
                         }
                         <span className="cart_number">{checkQuantity(state, pd.id)}</span>
                         <button onClick={() =>
                           dispatch({ type: "INCREASE", payload: pd })
-                        } className="cart_plus">+</button>
+                        } className="btn cart_plus">+</button>
                       </div>
                     </div>
+                  <button
+                  onClick={() => dispatch({ type: "REMOVE_ITEM", payload: pd })} 
+                  className="self-end btn btn-error text-white">Remove</button>
                   </div>
-
                 </div>
               )
             })}
