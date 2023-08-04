@@ -28,6 +28,7 @@
 }
 .search_input .input-bordered{
     width: 5rem;
+    border: 1px solid #D9D9D9;
 }
 .search_input .input-group input{
     width: 100%;

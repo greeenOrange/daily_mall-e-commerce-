@@ -14,6 +14,7 @@ import { IsInCart, checkQuantity } from '../../../Helpers/function';
 
 const ProductDetails = () => {
     const [details, setDetails] = useState({});
+    console.log(details);
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
     const [counter, setCounter] = useState(1);
     const [ToggleState, setToggleState] = useState(1);
@@ -122,14 +123,14 @@ const ProductDetails = () => {
                             <h5 className="product_text flex gap-2 items-center">Color: {details?.colors?.map((item) =>
                                 <span key={item} className="colors" style={{ background: item }}></span>)}</h5>
                             <h5 className="product_text flex gap-2 items-center">size:
-                                {details?.sizes?.map((list) => (
-                                    list.length > 2
-                                        ? (<span key={list} className="sizes">
-                                            {list.toLowerCase() === "small" ? 's' : ''}
-                                            {list.toLowerCase() === "medium" ? 'm' : ''}
-                                            {list.toLowerCase() === "large" ? 'xl' : ''}
+                                {details?.sizes?.map((size) => (
+                                    size.length >= 5 
+                                        ? (<span key={size} className="sizes">
+                                            {size.toLowerCase() === "small" ? 's' : ''}
+                                            {size.toLowerCase() === "medium" ? 'm' : ''}
+                                            {size.toLowerCase() === "large" ? 'xl' : ''}
                                         </span>)
-                                        : <span key={list} className="sizes">{list}</span>
+                                        :<span key={size} className="sizes">{size}</span>
                                 ))}
                             </h5>
                             {
