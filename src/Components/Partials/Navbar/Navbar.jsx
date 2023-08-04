@@ -1,14 +1,17 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import TopSearchBar from './TopSearchBar/TopSearchBar';
 import TopBar from './TopBar/TopBar';
 import './Navbar.css';
+import { Link } from 'react-router-dom';
+
 function Navbar({ colorTheme, setTheme, darkSide,
-  setDarkSide }) {
+  setDarkSide })
+  {
     const [category, setCategory] = useState(false);
     const handleCatagroy = () =>{
       setCategory(!category)
     }
-    console.log(category);
+
   return (
     <nav>
       <TopBar colorTheme={colorTheme} setTheme={setTheme} darkSide={darkSide}
@@ -35,11 +38,11 @@ function Navbar({ colorTheme, setTheme, darkSide,
 
             </div>
             <ul aria-label="Primary" role="list" className="nav_list">
-              <li><a href="#">Home</a></li>
-              <li><a href="#">All Brands</a></li>
-              <li><a href="#">Discount Products</a></li>
-              <li><a href="#">All Sellers</a></li>
-              <li><a href="#">Seller Zone</a></li>
+              <li><Link to="/">Home</Link></li>
+              <li><Link to="">All Brands</Link></li>
+              <li><Link to="">Discount Products</Link></li>
+              <li><Link to="">All Sellers</Link></li>
+              <li><Link to="">Seller Zone</Link></li>
             </ul>
           </div>
 

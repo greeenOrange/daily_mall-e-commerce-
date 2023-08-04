@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -7,13 +7,19 @@ import product from '../../../assets/brans/shose-1.png';
 import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/thumbs';
-import './ProductDetails.css'
+import './ProductDetails.css';
+import { CartContext } from '../../../Context/CartContextProvider';
+import { useParams } from 'react-router-dom';
+import { IsInCart, checkQuantity } from '../../../Helpers/function';
 
 const ProductDetails = () => {
+    const [details, setDetails] = useState({});
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
     const [counter, setCounter] = useState(1);
     const [ToggleState, setToggleState] = useState(1);
-    const [warning, setWarning] = useState('')
+    const [warning, setWarning] = useState('');
+    const { id } = useParams();
+    const { state, dispatch } = useContext(CartContext);
 
     const toggleTab = (index) => {
         setToggleState(index);
@@ -21,21 +27,29 @@ const ProductDetails = () => {
 
     const getActiveClass = (index, className) => ToggleState === index ? className : "";
 
-    const increase = () => {
-        setCounter(count => count + 1);
-        setWarning("") 
-    };
+    // const increase = () => {
+    //     setCounter(count => count + 1);
+    //     setWarning("")
+    // };
 
-    const decrease = () => {
-        if (counter <= 1) {
-            setWarning("At least 1 counted")   
-        }else if (counter >= 1){
-            setCounter(count => count - 1);
-            setWarning("") 
-        }else{
-            return ''
-        }
-    };
+    // const decrease = () => {
+    //     if (counter <= 1) {
+    //         setWarning("At least 1 counted")
+    //     } else if (counter >= 1) {
+    //         setCounter(count => count - 1);
+    //         setWarning("")
+    //     } else {
+    //         return ''
+    //     }
+    // };
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/products/${id}`)
+            .then(res => res.json())
+            .then(data => setDetails(data))
+            .catch(error => (console.log(error)))
+    }, [id]);
+
     return (
         <section className="product_details">
             <div className="container">
@@ -87,8 +101,7 @@ const ProductDetails = () => {
                         </Swiper>
                     </div>
                     <div className="product_right">
-                        <h2 className="details_title">Hot Selling Sneakers, Sneakers Casual
-                            Shoes Men Fashion Sneakers Fly knit Li</h2>
+                        <h2 className="details_title">{details.name}</h2>
                         <div className="details_rating rating">
                             <FontAwesomeIcon icon={faStar} />
                             <FontAwesomeIcon icon={faStar} />
@@ -98,32 +111,62 @@ const ProductDetails = () => {
                         </div>
                         <div className="details_price flex items-center gap-6">
                             <h6 className="details_strike strikeout">$30</h6>
-                            <h4 className="details_price">$239.99</h4>
+                            <h4 className="details_price">{details?.price}</h4>
                         </div>
-                        <p className="details_dec">Size our sofa slipcovers have 3 sizes. Chair slipcover measures up to 32in-47in wide (80-120cm), Loveseat slipcover measures up to 57in-70in wide (145-180cm), Sofia slipcover measures up to 72in-92in (185-235cm). PLEASE measure your sofa before choosing our sofa slipcovers.</p>
+                        <p className="details_dec">{details?.description}</p>
                         <div className="flex flex-col gap-5">
                             <h5 className="product_text">Availablity : <span className="stock">In stock</span></h5>
                             <h5 className="product_text">Product Code : <span>#1234</span></h5>
-                            <h5 className="product_text">Tags : <span>Shoes, Man, Classic </span></h5>
-                            <h5 className="product_text">Color: <span className="colors color_one"></span> <span className="colors color_two"></span> <span className="colors color_three"></span></h5>
-                            <h5 className="product_text">size: <span></span> <span></span> <span></span></h5>
-                            <div className="qunatity product_text">Quantity :
-                                <div className="count_num">
-                                    <span className="p-3">{counter}</span>
-                                    <div className="count_btn">
-                                        <button onClick={increase} className="plus">+</button>
-                                        <button onClick={decrease} className="minus">-</button>
+                            <h5 className="product_text">Tags : {details?.category?.map((item) =>
+                                <span key={item}>{item}</span>)}</h5>
+                            <h5 className="product_text flex gap-2 items-center">Color: {details?.colors?.map((item) =>
+                                <span key={item} className="colors" style={{ background: item }}></span>)}</h5>
+                            <h5 className="product_text flex gap-2 items-center">size:
+                                {details?.sizes?.map((list) => (
+                                    list.length > 2
+                                        ? (<span key={list} className="sizes">
+                                            {list.toLowerCase() === "small" ? 's' : ''}
+                                            {list.toLowerCase() === "medium" ? 'm' : ''}
+                                            {list.toLowerCase() === "large" ? 'xl' : ''}
+                                        </span>)
+                                        : <span key={list} className="sizes">{list}</span>
+                                ))}
+                            </h5>
+                            {
+                                IsInCart(state, details.id) ?
+                                    <div className="qunatity product_text">Quantity :
+
+                                        <div className="count_num">
+                                            <span className="p-3">{checkQuantity(state, details.id)}</span>
+                                            <div className="count_btn">
+                                                <button onClick={() =>
+                                                    dispatch({ type: "INCREASE", payload: details })
+                                                } className="plus">+</button>
+                                                {checkQuantity(state, details.id) > 1 ?<button onClick={() =>
+                                                    dispatch({ type: "DECREASE", payload: details })
+                                                } className="minus">-</button>
+                                                : <button
+                                                className="minus btn-disabled" tabIndex="-1" role="button" aria-disabled="true">-</button>
+                                            }
+                                            </div>
+                                        </div>
                                     </div>
-                                    
-                                </div>
-                                <p style={{color: "red"}}>{warning}</p>
-                            </div>
+                                    : null
+                            }
                         </div>
                         <div className="clear_section">
                             <h5 className="clear_text">Clear Selection</h5>
                             <div className="button_group">
                                 <button className="buy_now">Buy Now</button>
-                                <button className="add_to_cart_detailst">Add To Cart</button>
+                                { !IsInCart(state, details.id) ?
+                                <button
+                                    onClick={() =>
+                                        dispatch({ type: "ADD_ITEM", payload: details })
+                                    }
+                                    className="add_to_cart_detailst">Add To Cart</button> :
+                                    <button
+                                    className="btn btn-disabled" tabIndex="-1" role="button" aria-disabled="true">Add To Cart</button>
+                                }
                                 <button className="add_favourite"><FontAwesomeIcon icon={faHeart} /></button>
                             </div>
                         </div>

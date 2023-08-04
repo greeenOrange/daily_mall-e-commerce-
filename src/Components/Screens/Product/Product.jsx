@@ -5,12 +5,15 @@ import product1 from '../../../assets/products/img.png';
 
 import '../products/products.css';
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { CartContext } from '../../../Context/CartContextProvider';
 
 const Product = ({ product }) => {
-    const {name, price, } = product;
+    const {state, dispatch} = useContext(CartContext)
+    const {name, price, id} = product;
     return (
         <div className="primary_card">
-            <Link to='/productDetails'><img src={product1} alt="" /></Link>
+            <Link to={`/productdetails/${id}`}><img src={product1} alt="" /></Link>
             <div className="primary_card_body">
                 <h3 className="card_title">{name}
                 </h3>
@@ -26,7 +29,7 @@ const Product = ({ product }) => {
                         <h4 className="price">{price}</h4>
                     </div>
                 </div>
-                <button className="add_to_cart card-btn">
+                <button onClick={() => dispatch({type: "ADD_ITEM", payload: product})} className="add_to_cart card-btn">
                     Add to cart
                     <span className="circle"><FontAwesomeIcon icon={faPlus} /></span>
                 </button>

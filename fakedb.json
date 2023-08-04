@@ -1,9 +1,9 @@
 {
   "products":[
-    {
+    { "id": 1,
       "name": "Classic Denim Jeans",
       "description": "High-quality denim jeans for everyday wear.",
-      "price": "$49.99",
+      "price": 49.99,
       "images": [
         "https://example.com/images/jeans1.jpg",
         "https://example.com/images/jeans2.jpg",
@@ -13,10 +13,10 @@
       "colors": ["Blue", "Black", "Gray"],
       "sizes": ["28", "30", "32", "34", "36"]
     },
-    {
+    { "id": 2,
       "name": "Elegant Party Dress",
       "description": "A stunning dress perfect for parties and special occasions.",
-      "price": "$89.99",
+      "price": 89.99,
       "images": [
         "https://example.com/images/dress1.jpg",
         "https://example.com/images/dress2.jpg",
@@ -26,10 +26,10 @@
       "colors": ["Red", "Black", "White"],
       "sizes": ["Small", "Medium", "Large"]
     },
-    {
+    { "id": 3,
       "name": "Casual Printed T-Shirt",
       "description": "Comfortable and stylish t-shirt with unique prints.",
-      "price": "$24.99",
+      "price": 24.99,
       "images": [
         "https://example.com/images/tshirt1.jpg",
         "https://example.com/images/tshirt2.jpg",
@@ -39,10 +39,10 @@
       "colors": ["White", "Black", "Gray"],
       "sizes": ["XS", "S", "M", "L", "XL"]
     },
-    {
+    { "id": 4,
       "name": "Cozy Knit Sweater",
       "description": "Warm and cozy sweater for chilly days.",
-      "price": "$39.99",
+      "price": 39.99,
       "images": [
         "https://example.com/images/sweater1.jpg",
         "https://example.com/images/sweater2.jpg",
@@ -52,10 +52,10 @@
       "colors": ["Pink", "Gray", "Beige"],
       "sizes": ["Small", "Medium", "Large"]
     },
-    {
+    { "id": 5,
       "name": "Formal Business Suit",
       "description": "Sophisticated business suit for professional occasions.",
-      "price": "$199.99",
+      "price": 199.99,
       "images": [
         "https://example.com/images/suit1.jpg",
         "https://example.com/images/suit2.jpg",
@@ -65,10 +65,10 @@
       "colors": ["Navy", "Charcoal", "Black"],
       "sizes": ["40R", "42R", "44R", "46R"]
     },
-    {
+    { "id": 6,
       "name": "Floral Maxi Dress",
       "description": "A flowy and elegant maxi dress with floral patterns.",
-      "price": "$79.99",
+      "price": 79.99,
       "images": [
         "https://example.com/images/maxidress1.jpg",
         "https://example.com/images/maxidress2.jpg",
@@ -78,10 +78,10 @@
       "colors": ["Yellow", "Green", "Blue"],
       "sizes": ["Small", "Medium", "Large"]
     },
-    {
+    { "id": 7,
       "name": "Leather Biker Jacket",
       "description": "A stylish leather jacket for a trendy biker look.",
-      "price": "$149.99",
+      "price": 149.99,
       "images": [
         "https://example.com/images/jacket1.jpg",
         "https://example.com/images/jacket2.jpg",
@@ -91,10 +91,10 @@
       "colors": ["Black", "Brown"],
       "sizes": ["XS", "S", "M", "L", "XL"]
     },
-    {
+    { "id": 8,
       "name": "Athletic Running Shoes",
       "description": "High-performance running shoes for sports enthusiasts.",
-      "price": "$69.99",
+      "price": 69.99,
       "images": [
         "https://example.com/images/shoes1.jpg",
         "https://example.com/images/shoes2.jpg",
@@ -104,10 +104,10 @@
       "colors": ["Black", "White", "Blue"],
       "sizes": ["US 7", "US 8", "US 9", "US 10", "US 11"]
     },
-    {
+    { "id": 9,
       "name": "Cotton Button-Down Shirt",
       "description": "Casual and comfortable button-down shirt made from soft cotton.",
-      "price": "$34.99",
+      "price": 34.99,
       "images": [
         "https://example.com/images/shirt1.jpg",
         "https://example.com/images/shirt2.jpg",
@@ -117,10 +117,10 @@
       "colors": ["White", "Blue", "Striped"],
       "sizes": ["Small", "Medium", "Large"]
     },
-    {
+    { "id": 10,
       "name": "Flowy Boho Skirt",
       "description": "Bohemian-style flowy skirt for a relaxed and chic look.",
-      "price": "$54.99",
+      "price": 54.99,
       "images": [
         "https://example.com/images/skirt1.jpg",
         "https://example.com/images/skirt2.jpg",
@@ -130,10 +130,10 @@
       "colors": ["Purple", "Brown", "Patterned"],
       "sizes": ["Small", "Medium", "Large"]
     },
-    {
+    { "id": 11,
       "name": "Hooded Sweatshirt",
       "description": "A comfortable and warm hooded sweatshirt for casual outings.",
-      "price": "$29.99",
+      "price": 29.99,
       "images": [
         "https://example.com/images/sweatshirt1.jpg",
         "https://example.com/images/sweatshirt2.jpg",
@@ -143,10 +143,10 @@
       "colors": ["Gray", "Black", "Navy"],
       "sizes": ["XS", "S", "M", "L", "XL"]
     },
-    {
+    { "id": 12,
       "name": "Striped Polo Shirt",
       "description": "Classic striped polo shirt for a timeless look.",
-      "price": "$39.99",
+      "price": 39.99,
       "images": [
         "https://example.com/images/polo1.jpg",
         "https://example.com/images/polo2.jpg",
@@ -156,10 +156,10 @@
       "colors": ["Navy/White", "Red/White", "Black/White"],
       "sizes": ["XS", "S", "M", "L", "XL"]
     },
-    {
+    { "id": 13,
       "name": "Sleeveless Summer Dress",
       "description": "Light and breezy sleeveless dress for hot summer days.",
-      "price": "$49.99",
+      "price": 49.99,
       "images": [
         "https://example.com/images/summerdress1.jpg",
         "https://example.com/images/summerdress2.jpg",
@@ -169,10 +169,10 @@
       "colors": ["Blue", "Yellow", "White"],
       "sizes": ["Small", "Medium", "Large"]
     },
-    {
+    { "id": 14,
       "name": "Rugged Cargo Shorts",
       "description": "Durable and functional cargo shorts for outdoor adventures.",
-      "price": "$39.99",
+      "price": 39.99,
       "images": [
         "https://example.com/images/shorts1.jpg",
         "https://example.com/images/shorts2.jpg",
@@ -182,10 +182,10 @@
       "colors": ["Khaki", "Green", "Gray"],
       "sizes": ["30", "32", "34", "36", "38"]
     },
-    {
+    { "id": 15,
       "name": "Fitted Blazer",
       "description": "A well-tailored blazer to add sophistication to your outfit.",
-      "price": "$79.99",
+      "price": 79.99,
       "images": [
         "https://example.com/images/blazer1.jpg",
         "https://example.com/images/blazer2.jpg",
@@ -195,10 +195,10 @@
       "colors": ["Black", "Navy", "Gray"],
       "sizes": ["Small", "Medium", "Large"]
     },
-    {
+    { "id": 16,
       "name": "Printed Graphic Sweatshirt",
       "description": "A trendy sweatshirt featuring eye-catching graphic prints.",
-      "price": "$44.99",
+      "price": 44.99,
       "images": [
         "https://example.com/images/graphic1.jpg",
         "https://example.com/images/graphic2.jpg",
@@ -208,10 +208,10 @@
       "colors": ["White", "Black", "Gray"],
       "sizes": ["XS", "S", "M", "L", "XL"]
     },
-    {
+    { "id": 17,
       "name": "Knit Beanie Hat",
       "description": "Cozy knit beanie hat to keep you warm in the winter.",
-      "price": "$19.99",
+      "price": 19.99,
       "images": [
         "https://example.com/images/beanie1.jpg",
         "https://example.com/images/beanie2.jpg",
@@ -221,10 +221,10 @@
       "colors": ["Black", "Gray", "Navy"],
       "sizes": ["One Size"]
     },
-    {
+    { "id": 18,
       "name": "Casual Linen Shorts",
       "description": "Lightweight and breathable linen shorts for a laid-back look.",
-      "price": "$34.99",
+      "price": 34.99,
       "images": [
         "https://example.com/images/linenshorts1.jpg",
         "https://example.com/images/linenshorts2.jpg",
@@ -234,10 +234,10 @@
       "colors": ["Beige", "White", "Blue"],
       "sizes": ["30", "32", "34", "36"]
     },
-    {
+    { "id": 19,
       "name": "Bohemian Fringed Bag",
       "description": "A boho-chic fringed bag to complete your festival look.",
-      "price": "$29.99",
+      "price": 29.99,
       "images": [
         "https://example.com/images/fringebag1.jpg",
         "https://example.com/images/fringebag2.jpg",

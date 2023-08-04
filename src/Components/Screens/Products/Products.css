@@ -37,7 +37,7 @@
     line-height: var(--size-900);
 }
 @media (min-width: 50em) {
-    .card_warpper {
+    .card_wrapper {
         display: grid;
         grid-template-columns: repeat(6, 1fr);
         gap: var(--size-900);

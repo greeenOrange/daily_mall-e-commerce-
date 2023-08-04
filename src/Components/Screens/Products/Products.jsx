@@ -1,7 +1,7 @@
 import 'react';
-
 import { useEffect, useState } from 'react';
 import Product from '../Product/Product';
+import uuid from 'react-uuid';
 
 function Products() {
     const [products, setProducts] = useState([]);
@@ -10,10 +10,10 @@ function Products() {
     const data = [...products]
     const sliceData = data.slice(0, 12)
     useEffect(() => {
-        fetch('/fakedb.json')
+        fetch('http://localhost:5000/products')
             .then((response) => response.json())
             .then((data) => {
-                setProducts(data.products);
+                setProducts(data);
                 setError(null);
             })
             .catch((err) => {
@@ -22,12 +22,14 @@ function Products() {
             })
             .finally(() => {
                 setIsLoading(false);
+                
             });
+
     }, []);
     return (
         <section className="product">
             <div className="container">
-                <div className="card_warpper">
+                <div className="card_wrapper">
                     {
                         isLoading &&  <span className="loading loading-ring loading-lg text-center"></span>
                     }
@@ -40,8 +42,9 @@ function Products() {
                     {sliceData &&
                         sliceData.map(product => (
                             <Product 
+                            key={uuid()}
                             product={product}
-                            key={product.id}
+                            UniqueID={uuid()}
                             />
 
                         )

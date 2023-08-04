@@ -2,8 +2,12 @@ import 'react'
 import './TopSearchBar.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart, faUser } from '@fortawesome/free-regular-svg-icons'
-import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons'
+import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
+import { useContext } from 'react';
+import { CartContext } from '../../../../Context/CartContextProvider';
+import { Link } from 'react-router-dom';
 function TopSearchBar() {
+  const { state } = useContext(CartContext);
   return (
     <section className="top_search_bar">
       <div className="container">
@@ -32,8 +36,8 @@ function TopSearchBar() {
 
             </li>
             <li className="users_cart">
-              <a href=""><FontAwesomeIcon icon={faShoppingBasket} /></a>
-              $13.130
+              <Link to="/cart"><FontAwesomeIcon icon={faShoppingBasket} /></Link>
+              {state.itemCounter}
             </li>
           </ul>
         </div>
