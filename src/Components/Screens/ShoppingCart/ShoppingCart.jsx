@@ -1,5 +1,5 @@
 import 'react'
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { CartContext } from '../../../Context/CartContextProvider';
 import images from '../../../assets/cart_card.png'
 import './ShoppingCart.css';
@@ -7,10 +7,16 @@ import { checkQuantity } from '../../../Helpers/function';
 
 function ShoppingCart() {
   const { state, dispatch } = useContext(CartContext);
+  const [promoCode, setPromoCode] = useState("");
   // const item = state?.selectedItems?.map((pd, index) => (
   //     {key: index, value: pd}
   // ))
   // console.log(item);
+
+  const handleApplyPromo = () => {
+    dispatch({ type: "APPLY_PROMO", payload: { promoCode: promoCode } });
+  };
+
   return (
     <section className="cart_container">
       <div className="container">
@@ -34,14 +40,14 @@ function ShoppingCart() {
                     <div className="cart_measurement">
                       <select className="select select-bordered max-w-xs">
                         <option disabled selected>select size</option>
-                      {pd?.sizes?.map((size) => (
-                        <option key={size}>{size}</option>
+                        {pd?.sizes?.map((size) => (
+                          <option key={size}>{size}</option>
                         ))}
                       </select>
                       <select className="select select-bordered max-w-xs">
                         <option disabled selected>select color</option>
                         {pd?.colors?.map((color) => (
-                        <option key={color}>{color}</option>
+                          <option key={color}>{color}</option>
                         ))}
                       </select>
 
@@ -59,9 +65,9 @@ function ShoppingCart() {
                         } className="btn cart_plus">+</button>
                       </div>
                     </div>
-                  <button
-                  onClick={() => dispatch({ type: "REMOVE_ITEM", payload: pd })} 
-                  className="self-end btn btn-error text-white">Remove</button>
+                    <button
+                      onClick={() => dispatch({ type: "REMOVE_ITEM", payload: pd })}
+                      className="self-end btn btn-error text-white">Remove</button>
                   </div>
                 </div>
               )
@@ -69,14 +75,18 @@ function ShoppingCart() {
           </div>
           <div className="shopping_calculator lg:w-9/12">
             <p>Delivery date 22 June 2023</p>
-            <div className="form-control shopping_cart_btn"><div className="input-group"><input type="text" placeholder="Promo code" className="input input-bordered lg:w-full" /><button className="btn ">Search</button></div></div>
+            <div className="form-control shopping_cart_btn"><div className="input-group"><input type="text" value={promoCode}
+              onChange={(e) => setPromoCode(e.target.value)}
+              placeholder="Enter promo code" className="input input-bordered lg:w-full" />
+              <button onClick={handleApplyPromo} className="btn">Apply Promo</button></div>
+            </div>
             <p>10% Discount</p>
             <div className="total_cart_price">
-              <h6 className="subtotal"><span>subtotal</span> <span>$220</span></h6>
-              <p><span>delivery</span> <span>$20</span></p>
-              <p><span>Tax</span> <span>$2</span></p>
+              <h6 className="subtotal"><span>subtotal</span> <span>{state.total}</span></h6>
+              <p><span>delivery</span> <span>{state.deliveryCost}</span></p>
+              <p><span>Tax</span> <span>{state.tax}</span></p>
               <div className="divider"></div>
-              <h6 className="subtotal"><span>Grand total</span> <span>{state.total}</span></h6>
+              <h6 className="subtotal"><span>Grand total</span>{state.totalCost}<span></span></h6>
             </div>
           </div>
         </div>
