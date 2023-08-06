@@ -3,7 +3,6 @@ import { CartContext } from '../../../Context/CartContextProvider';
 import images from '../../../assets/cart_card.png'
 import './ShoppingCart.css';
 import { checkQuantity } from '../../../Helpers/function';
-import { format } from 'date-fns';
 
 function ShoppingCart() {
   const { state, dispatch } = useContext(CartContext);
