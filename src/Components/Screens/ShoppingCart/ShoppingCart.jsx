@@ -3,6 +3,7 @@ import { CartContext } from '../../../Context/CartContextProvider';
 import images from '../../../assets/cart_card.png'
 import './ShoppingCart.css';
 import { checkQuantity } from '../../../Helpers/function';
+import { Link } from 'react-router-dom';
 
 function ShoppingCart() {
   const { state, dispatch } = useContext(CartContext);
@@ -31,9 +32,13 @@ function ShoppingCart() {
   return (
     <section className="cart_container">
       <div className="container">
-        <h2 className="cart_title">Shopping cart items: {state.itemCounter}</h2>
+        <h2 className="cart_title">Shopping cart items</h2>
+        <p className="cart_items">items:{state.itemCounter}</p>
         <div className="cart_items_wrapper">
           <div className="grid grid-cols-1 gap-6">
+            <button 
+            onClick={() => dispatch({ type: "CLEAR" })}
+            className="btn btn-error text-white text-lg flex items-center justify-end">Clear Cart</button>
             {state?.selectedItems?.map((pd) => {
               return (
                 <div key={pd?.name} className="shopping_card">
@@ -86,7 +91,7 @@ function ShoppingCart() {
           </div>
           <div className="shopping_calculator lg:w-9/12">
             <p>Expected Delivery Date: {deliveryDate}</p>
-            <div className="form-control shopping_cart_btn"><div className="input-group">
+            <div className="form-control shopping_cart_input"><div className="input-group">
               <input
                 type="text"
                 value={promoCode}
@@ -94,7 +99,7 @@ function ShoppingCart() {
                 placeholder="Enter promo code"
                 className="input input-bordered lg:w-full"
               />
-              <button onClick={handleApplyPromo} className="btn">Apply</button>
+              <button onClick={handleApplyPromo} className="apply_btn btn text-lg">Apply</button>
             </div>
             </div>
             <p>10% Discount</p>
@@ -105,9 +110,28 @@ function ShoppingCart() {
               <p><span>Tax</span> <span>{state.tax}</span></p>
               <div className="divider"></div>
               <h6 className="subtotal"><span>Grand total</span>{state.totalCost}<span></span></h6>
+              <div className="shopping_group_btn">
+              <button 
+              onClick={() => dispatch({ type: "CHECKOUT" })}
+              className="checkout shopping_cart_btn btn w-full">Checkout</button>
+              <Link to='/' className="shopping_cart_btn continue_btn btn w-full">Continue shopping</Link>
+              </div>
             </div>
           </div>
         </div>
+        {state.checkout && (
+        <div>
+          <h3>Checked Out Successfully !</h3>
+            <Link to="/products">Buy More</Link>
+
+        </div>
+      )}
+      {!state.itemCounter && !state.checkout && (
+        <div>
+          <h3>Want To Buy?</h3>
+            <Link to="/products">Go To Shop</Link>
+        </div>
+      )}
       </div>
     </section>
   )

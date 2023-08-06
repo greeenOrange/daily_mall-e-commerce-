@@ -1,14 +1,13 @@
 import { useReducer, createContext } from "react";
-import { format } from 'date-fns';
 
 const initialState = {
   selectedItems: [],
   itemCounter: 0,
   total: 0,
   deliveryCost: 0,
+  deliveryDate: null,
   promoDiscount: 0,
   checkout: false,
-  deliveryDate: null,
 };
 
 const DELIVERY_COST_THRESHOLDS = {
@@ -30,9 +29,7 @@ const calculateDeliveryCost = (totalCost) => {
 const calculateCartSummary = (items, promoCode) => {
   const itemCounter = items.reduce((total, product) => total + product.quantity, 0);
   const total = items.reduce((total, product) => total + product.price * product.quantity, 0);
-  console.log("Promo Code:", promoCode);
   const promoDiscount = promoCode === "DISCOUNT10" ? total * 0.1 : 0;
-  console.log("Promo Discount:", promoDiscount);
   const tax = TAX_RATE * total;
   const deliveryCost = calculateDeliveryCost(total + tax - promoDiscount);
   const totalCost = total + tax + deliveryCost - promoDiscount;
@@ -97,7 +94,7 @@ const cartReducer = (state, action) => {
       return {
         ...state,
         ...calculateCartSummary(state.selectedItems, action.payload),
-        promoCode: action.payload || "", // Move the promoCode update after calculateCartSummary
+        promoCode: action.payload || "",
       };
 
     case "CHECKOUT":
@@ -116,6 +113,11 @@ const cartReducer = (state, action) => {
         selectedItems: [],
         itemCounter: 0,
         total: 0,
+        deliveryCost: 0,
+        promoDiscount: 0,
+        deliveryDate: null,
+        totalCost: 0,
+        tax: 0,
         checkout: false,
       };
 
