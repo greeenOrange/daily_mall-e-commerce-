@@ -8,6 +8,11 @@ import { format } from 'date-fns';
 function ShoppingCart() {
   const { state, dispatch } = useContext(CartContext);
   const [promoCode, setPromoCode] = useState("");
+  const [deliveryDate, setDeliveryDate] = useState(() => {
+    const current = new Date();
+    current.setDate(current.getDate() + 10);
+    return current.toDateString();
+  });
 
   const handlePromoCodeChange = (event) => {
     const newPromoCode = event.target.value;
@@ -20,8 +25,8 @@ function ShoppingCart() {
     dispatch({ type: "APPLY_PROMO", payload: promoCode });
     setPromoCode("");
   };
-  var date = new Date();
-date.setDate(date.getDate() + 7);
+
+
 
 
   return (
@@ -81,7 +86,7 @@ date.setDate(date.getDate() + 7);
             })}
           </div>
           <div className="shopping_calculator lg:w-9/12">
-            <p>Expected Delivery Date: </p>
+            <p>Expected Delivery Date: {deliveryDate}</p>
             <div className="form-control shopping_cart_btn"><div className="input-group">
               <input
                 type="text"
