@@ -89,7 +89,7 @@ function ShoppingCart() {
               )
             })}
           </div>
-          <div className="shopping_calculator lg:w-9/12">
+          <div className="shopping_calculator lg:w-9/12 sticky top-0">
             <p>Expected Delivery Date: {deliveryDate}</p>
             <div className="form-control shopping_cart_input"><div className="input-group">
               <input
