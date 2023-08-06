@@ -1,21 +1,28 @@
-import 'react'
 import { useContext, useState } from 'react';
 import { CartContext } from '../../../Context/CartContextProvider';
 import images from '../../../assets/cart_card.png'
 import './ShoppingCart.css';
 import { checkQuantity } from '../../../Helpers/function';
+import { format } from 'date-fns';
 
 function ShoppingCart() {
   const { state, dispatch } = useContext(CartContext);
   const [promoCode, setPromoCode] = useState("");
-  // const item = state?.selectedItems?.map((pd, index) => (
-  //     {key: index, value: pd}
-  // ))
-  // console.log(item);
+
+  const handlePromoCodeChange = (event) => {
+    const newPromoCode = event.target.value;
+    console.log("New Promo Code:", newPromoCode);
+    setPromoCode(newPromoCode);
+  };
 
   const handleApplyPromo = () => {
-    dispatch({ type: "APPLY_PROMO", payload: { promoCode: promoCode } });
+    console.log("Applying Promo Code:", promoCode);
+    dispatch({ type: "APPLY_PROMO", payload: promoCode });
+    setPromoCode("");
   };
+  var date = new Date();
+date.setDate(date.getDate() + 7);
+
 
   return (
     <section className="cart_container">
@@ -74,16 +81,23 @@ function ShoppingCart() {
             })}
           </div>
           <div className="shopping_calculator lg:w-9/12">
-            <p>Delivery date 22 June 2023</p>
-            <div className="form-control shopping_cart_btn"><div className="input-group"><input type="text" value={promoCode}
-              onChange={(e) => setPromoCode(e.target.value)}
-              placeholder="Enter promo code" className="input input-bordered lg:w-full" />
-              <button onClick={handleApplyPromo} className="btn">Apply Promo</button></div>
+            <p>Expected Delivery Date: </p>
+            <div className="form-control shopping_cart_btn"><div className="input-group">
+              <input
+                type="text"
+                value={promoCode}
+                onChange={handlePromoCodeChange}
+                placeholder="Enter promo code"
+                className="input input-bordered lg:w-full"
+              />
+              <button onClick={handleApplyPromo} className="btn">Apply</button>
+            </div>
             </div>
             <p>10% Discount</p>
             <div className="total_cart_price">
               <h6 className="subtotal"><span>subtotal</span> <span>{state.total}</span></h6>
               <p><span>delivery</span> <span>{state.deliveryCost}</span></p>
+              <p><span>Discount</span> <span>{state.promoDiscount}</span></p>
               <p><span>Tax</span> <span>{state.tax}</span></p>
               <div className="divider"></div>
               <h6 className="subtotal"><span>Grand total</span>{state.totalCost}<span></span></h6>
