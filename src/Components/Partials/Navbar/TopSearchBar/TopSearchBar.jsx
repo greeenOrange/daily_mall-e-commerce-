@@ -8,6 +8,7 @@ import { CartContext } from '../../../../Context/CartContextProvider';
 import { Link } from 'react-router-dom';
 function TopSearchBar() {
   const { state } = useContext(CartContext);
+
   return (
     <section className="top_search_bar">
       <div className="container">
