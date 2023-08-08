@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { CartContext } from '../../../Context/CartContextProvider';
+import './Product.css'
 
 const Product = ({ product }) => {
     const { dispatch} = useContext(CartContext)
