@@ -1,4 +1,4 @@
-# Wonder Vacation Web Apps :airplane: [live site](https://stellular-boba-dd261f.netlify.app/)
+# e-commerce Web Apps :airplane: [live site](https://stellular-boba-dd261f.netlify.app/)
 
 ## Book Domestic and International Holidays
 :black_medium_square: [Live site](https://stellular-boba-dd261f.netlify.app/p)
