@@ -1,14 +1,11 @@
 import { faPlus, faStar, faStarHalf } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import product1 from '../../../assets/products/img.png';
-
-import '../products/products.css';
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { CartContext } from '../../../Context/CartContextProvider';
 
 const Product = ({ product }) => {
-    const {state, dispatch} = useContext(CartContext)
+    const { dispatch} = useContext(CartContext)
     const {name, price, id, image} = product;
     return (
         <div className="primary_card">
