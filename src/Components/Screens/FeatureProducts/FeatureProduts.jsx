@@ -1,4 +1,3 @@
-import 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faStar, faStarHalf } from '@fortawesome/free-solid-svg-icons'
 import { useContext } from 'react';
@@ -6,8 +5,22 @@ import { Link } from 'react-router-dom';
 import { ProductsContext } from '../../../Context/ProductsContextProvider';
 import './FeatureProducts.css';
 import product1 from '../../../assets/products/img.png'
-function FeatureProduts() {
+import { CartContext } from '../../../Context/CartContextProvider';
+
+function FeatureProduts({searchQuery}) {
     const products = useContext(ProductsContext);
+    const { dispatch} = useContext(CartContext);
+
+    let filteredItems = products;
+    console.log('Search Query:', searchQuery);
+    console.log('Filtered Items Length:', filteredItems.length);
+
+    if (searchQuery) {
+      filteredItems = products.filter((item) =>
+        item.name.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+    }
+
     return (
         <section className="feature_products">
             <div className="container">
@@ -55,7 +68,7 @@ function FeatureProduts() {
                         </div>
                     </div>
                     <div className="feture_card_wrapper">
-                        {products
+                        {filteredItems
                             .map((product, index) => {
                                 return (
                                     <div key={index} className="primary_card">
@@ -75,7 +88,9 @@ function FeatureProduts() {
                                                     <h4 className="price">{product?.price}</h4>
                                                 </div>
                                             </div>
-                                            <button className="add_to_cart card-btn">
+                                            <button 
+                                            onClick={() => dispatch({type: "ADD_ITEM", payload: product})}
+                                            className="add_to_cart card-btn">
                                                 Add to cart
                                                 <span className="circle"><FontAwesomeIcon icon={faPlus} /></span>
                                             </button>

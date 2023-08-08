@@ -9,6 +9,7 @@ function Products() {
     const [isLoading, setIsLoading] = useState(true);
     const data = [...products]
     const sliceData = data.slice(0, 12)
+    
     useEffect(() => {
         fetch('http://localhost:5000/products')
             .then((response) => response.json())

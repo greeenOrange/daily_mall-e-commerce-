@@ -8,18 +8,31 @@ import { ProductsContextProvider } from '../Context/ProductsContextProvider';
 import CartContextProvider from '../Context/CartContextProvider';
 import FeatureProduts from './Screens/FeatureProducts/FeatureProduts';
 import ShoppingCart from './Screens/ShoppingCart/ShoppingCart';
+import { useState } from 'react';
+
 function App() {
+  const [searchQuery, setSearchQuery] = useState("");
+  
+  const handleSearch = (query) => {
+    setSearchQuery(query);
+  };
 
   return (
     <ProductsContextProvider>
       <CartContextProvider>
         <BrowserRouter>
-          <Navbar />
+          <Navbar 
+          onSearch={handleSearch}
+          />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
             <Route path="/productdetails/:id" element={<ProductDetails />} />
-            <Route path="/featureproducts" element={<FeatureProduts />} />
+            <Route path="/featureproducts" element={<FeatureProduts 
+            onSearch={handleSearch} 
+            searchQuery={searchQuery}
+            />} 
+            />
             <Route path="/cart" element={<ShoppingCart />} />
           </Routes>
         </BrowserRouter>

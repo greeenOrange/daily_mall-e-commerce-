@@ -77,6 +77,12 @@
 .users_cart a:hover{
     transform: scale(1.1);
 }
+.suggestions {
+    padding: .8rem;
+}
+.suggestions li{
+    font-size: 1.2rem;
+}
 @media (min-width: 50em){
 .second_nav{
     display: flex;

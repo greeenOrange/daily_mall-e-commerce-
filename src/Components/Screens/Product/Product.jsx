@@ -1,4 +1,3 @@
-import 'react'
 import { faPlus, faStar, faStarHalf } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import product1 from '../../../assets/products/img.png';

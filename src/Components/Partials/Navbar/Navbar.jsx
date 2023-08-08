@@ -1,11 +1,10 @@
-import React, { useContext, useState } from 'react';
+import { useState } from 'react';
 import TopSearchBar from './TopSearchBar/TopSearchBar';
 import TopBar from './TopBar/TopBar';
 import './Navbar.css';
 import { Link } from 'react-router-dom';
 
-function Navbar({ colorTheme, setTheme, darkSide,
-  setDarkSide })
+function Navbar({colorTheme, setTheme, darkSide, setDarkSide, onSearch})
   {
     const [category, setCategory] = useState(false);
     const handleCatagroy = () =>{
@@ -15,8 +14,11 @@ function Navbar({ colorTheme, setTheme, darkSide,
   return (
     <nav>
       <TopBar colorTheme={colorTheme} setTheme={setTheme} darkSide={darkSide}
-        setDarkSide={setDarkSide} />
-      <TopSearchBar />
+      setDarkSide={setDarkSide} />
+      <TopSearchBar 
+      onSearch={onSearch}
+      />
+
       <section className="main_menu">
         <div className="container">
           <div className="nav_wrapper">
