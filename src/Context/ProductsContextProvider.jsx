@@ -7,7 +7,7 @@ export function ProductsContextProvider(props){
     const [products, setProducts] = useState([]);
 
     const fetchData = () => {
-        return axios.get("http://localhost:5000/products")
+        return axios.get("https://fakestoreapi.com/products")
               .then((response) => setProducts(response.data));
       }
 

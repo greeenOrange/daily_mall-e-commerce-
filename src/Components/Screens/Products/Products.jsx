@@ -11,7 +11,7 @@ function Products() {
     const sliceData = data.slice(0, 12)
     
     useEffect(() => {
-        fetch('http://localhost:5000/products')
+        fetch('https://fakestoreapi.com/products')
             .then((response) => response.json())
             .then((data) => {
                 setProducts(data);

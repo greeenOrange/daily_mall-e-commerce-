@@ -16,9 +16,7 @@ const ProductDetails = () => {
     const [details, setDetails] = useState({});
     console.log(details);
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
-    const [counter, setCounter] = useState(1);
     const [ToggleState, setToggleState] = useState(1);
-    const [warning, setWarning] = useState('');
     const { id } = useParams();
     const { state, dispatch } = useContext(CartContext);
 
@@ -45,7 +43,7 @@ const ProductDetails = () => {
     // };
 
     useEffect(() => {
-        fetch(`http://localhost:5000/products/${id}`)
+        fetch(`https://fakestoreapi.com/products/${id}`)
             .then(res => res.json())
             .then(data => setDetails(data))
             .catch(error => (console.log(error)))
@@ -63,16 +61,16 @@ const ProductDetails = () => {
                             className="mySwiper2"
                         >
                             <SwiperSlide>
-                                <img alt="" src={product} />
+                                <img alt="" src={details?.image} />
                             </SwiperSlide>
                             <SwiperSlide>
-                                <img alt="" src={product} />
+                                <img alt="" src={details?.image} />
                             </SwiperSlide>
                             <SwiperSlide>
-                                <img alt="" src={product} />
+                                <img alt="" src={details?.image} />
                             </SwiperSlide>
                             <SwiperSlide>
-                                <img alt="" src={product} />
+                                <img alt="" src={details?.image} />
                             </SwiperSlide>
                         </Swiper>
                         <Swiper
@@ -85,19 +83,19 @@ const ProductDetails = () => {
                             className="mySwiper mt-4"
                         >
                             <SwiperSlide>
-                                <img alt="" src={product} />
+                                <img alt="" src={details?.image} />
                             </SwiperSlide>
                             <SwiperSlide>
-                                <img alt="" src={product} />
+                                <img alt="" src={details?.image} />
                             </SwiperSlide>
                             <SwiperSlide>
-                                <img alt="" src={product} />
+                                <img alt="" src={details?.image} />
                             </SwiperSlide>
                             <SwiperSlide>
-                                <img alt="" src={product} />
+                                <img alt="" src={details?.image} />
                             </SwiperSlide>
                             <SwiperSlide>
-                                <img alt="" src={product} />
+                                <img alt="" src={details?.image} />
                             </SwiperSlide>
                         </Swiper>
                     </div>
@@ -118,8 +116,8 @@ const ProductDetails = () => {
                         <div className="flex flex-col gap-5">
                             <h5 className="product_text">Availablity : <span className="stock">In stock</span></h5>
                             <h5 className="product_text">Product Code : <span>#1234</span></h5>
-                            <h5 className="product_text">Tags : {details?.category?.map((item) =>
-                                <span key={item}>{item}</span>)}</h5>
+                            <h5 className="product_text">Tags : 
+                                <span > {details?.category}</span></h5>
                             <h5 className="product_text flex gap-2 items-center">Color: {details?.colors?.map((item) =>
                                 <span key={item} className="colors" style={{ background: item }}></span>)}</h5>
                             <h5 className="product_text flex gap-2 items-center">size:

@@ -1,25 +1,24 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faStar, faStarHalf } from '@fortawesome/free-solid-svg-icons'
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { ProductsContext } from '../../../Context/ProductsContextProvider';
 import './FeatureProducts.css';
-import product1 from '../../../assets/products/img.png'
 import { CartContext } from '../../../Context/CartContextProvider';
 
-function FeatureProduts({searchQuery}) {
+function FeatureProduts({ searchQuery }) {
+
     const products = useContext(ProductsContext);
-    const { dispatch} = useContext(CartContext);
+    const { dispatch } = useContext(CartContext);
 
     let filteredItems = products;
-    console.log('Search Query:', searchQuery);
-    console.log('Filtered Items Length:', filteredItems.length);
 
     if (searchQuery) {
-      filteredItems = products.filter((item) =>
-        item.name.toLowerCase().includes(searchQuery.toLowerCase())
-      );
+        filteredItems = products.filter((item) =>
+            item?.title.toLowerCase().includes(searchQuery.toLowerCase())
+        );
     }
+    const menuItems = [...new Set(products.map((pd) => pd.category))];
 
     return (
         <section className="feature_products">
@@ -27,38 +26,17 @@ function FeatureProduts({searchQuery}) {
                 <div className="feature_product_wrapper">
                     <div className="product_shorting">
                         <h2 className="categories_title">Categories</h2>
-                        <ul className="categories_items">
-                            <li className="categories_item">
-                                <Link className="categories_link" to="">Bags & Shoes</Link>
-                                </li>
-                            <li className="categories_item">
-                                <Link className="categories_link" to="">Home, Pet Appliences</Link>
-                            </li>
-                            <li className="categories_item">
-                                <Link className="categories_link" to="">Phones & Telecom</Link>
-                                </li>
-                            <li className="categories_item">
-                                <Link className="categories_link" to="">Computer Office & Security</Link>
-                                </li>
-                            <li className="categories_item">
-                                <Link className="categories_link" to="">Beauty Helath & Hair</Link>
-                                </li>
-                            <li className="categories_item">
-                                <Link className="categories_link" to="">Toy’s Kids & Babies</Link>
-                                </li>
-                            <li className="categories_item">
-                                <Link className="categories_link" to="">Jewelry & Watches</Link>
-                                </li>
-                            <li className="categories_item">
-                                <Link className="categories_link" to="">Women’s Fashion </Link>
-                                </li>
-                            <li className="categories_item">
-                                <Link className="categories_link" to="">Outdoor Fun & Sports </Link>
-                                </li>
-                            <li className="categories_item">
-                                <Link className="categories_link" to="">Home Improvement & Tools </Link>
-                                </li>
-                        </ul>
+                        {menuItems.map((Val, id) => {
+                            return (
+                                <ul key={id} className="categories_items">
+
+                                    <li className="categories_item">
+                                        <Link className="categories_link" to="">{Val}</Link>
+                                    </li>
+                                </ul>
+                            );
+                        })}
+
                         <h2 className="filter_price_title">Price</h2>
                         <div className="price_filter">
                             <input type="text" placeholder="0" className="input input-bordered w-full max-w-xs price_input" />
@@ -72,9 +50,9 @@ function FeatureProduts({searchQuery}) {
                             .map((product, index) => {
                                 return (
                                     <div key={index} className="primary_card">
-                                        <Link to='/productDetails'><img src={product1} alt="" /></Link>
+                                        <Link to={`/productdetails/${product?.id}`}><img src={product?.image} alt="" /></Link>
                                         <div className="primary_card_body">
-                                            <h3 className="card_title">{product?.name}
+                                            <h3 className="card_title">{product?.title}
                                             </h3>
                                             <div className="card_rating_price">
                                                 <div className="rating">
@@ -88,9 +66,9 @@ function FeatureProduts({searchQuery}) {
                                                     <h4 className="price">{product?.price}</h4>
                                                 </div>
                                             </div>
-                                            <button 
-                                            onClick={() => dispatch({type: "ADD_ITEM", payload: product})}
-                                            className="add_to_cart card-btn">
+                                            <button
+                                                onClick={() => dispatch({ type: "ADD_ITEM", payload: product })}
+                                                className="add_to_cart card-btn">
                                                 Add to cart
                                                 <span className="circle"><FontAwesomeIcon icon={faPlus} /></span>
                                             </button>

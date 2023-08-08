@@ -5,21 +5,13 @@ import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
 import { useContext, useEffect, useState } from 'react';
 import { CartContext } from '../../../../Context/CartContextProvider';
 import { Link } from 'react-router-dom';
-import { ProductsContext } from '../../../../Context/ProductsContextProvider';
 
 function TopSearchBar({onSearch}) {
   const { state } = useContext(CartContext);
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
-
-  const handleSearchInputChange = (e) => {
-    const query = e.target.value
-    setSearchQuery(query);
-    onSearch(searchQuery);
-    setSuggestions([]);
-    setShowSuggestions(false);
-  };
+  const [selectedCategory, setSelectedCategory] = useState(null);
 
   useEffect(() => {
     if (searchQuery === "") {
@@ -38,6 +30,15 @@ function TopSearchBar({onSearch}) {
       });
   }, [searchQuery]);
 
+  const handleSearchInputChange = (e) => {
+    const query = e.target.value
+    setSearchQuery(query);
+    onSearch(searchQuery);
+    setSuggestions([]);
+    setShowSuggestions(false);
+  };
+
+ 
 
   const handleSearch = () => {
     onSearch(searchQuery);
@@ -91,8 +92,8 @@ function TopSearchBar({onSearch}) {
             <li className="dropdown user_dropdown">
               <label tabIndex={0} className="btn user_menu m-1"><FontAwesomeIcon icon={faUser} /></label>
               <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-                <li><a>Item 1</a></li>
-                <li><a>Item 2</a></li>
+                <li><a>category 1</a></li>
+                <li><a>category 2</a></li>
               </ul>
 
             </li>

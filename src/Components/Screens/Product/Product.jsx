@@ -9,10 +9,10 @@ import { CartContext } from '../../../Context/CartContextProvider';
 
 const Product = ({ product }) => {
     const {state, dispatch} = useContext(CartContext)
-    const {name, price, id} = product;
+    const {name, price, id, image} = product;
     return (
         <div className="primary_card">
-            <Link to={`/productdetails/${id}`}><img src={product1} alt="" /></Link>
+            <Link to={`/productdetails/${id}`}><img src={image} alt="" /></Link>
             <div className="primary_card_body">
                 <h3 className="card_title">{name}
                 </h3>

@@ -96,7 +96,7 @@ function ShoppingCart() {
                 type="text"
                 value={promoCode}
                 onChange={handlePromoCodeChange}
-                placeholder="Enter promo code"
+                placeholder="Enter promo code: DISCOUNT10"
                 className="input input-bordered lg:w-full"
               />
               <button onClick={handleApplyPromo} className="apply_btn btn text-lg">Apply</button>
@@ -122,14 +122,14 @@ function ShoppingCart() {
         {state.checkout && (
         <div>
           <h3>Checked Out Successfully !</h3>
-            <Link to="/products">Buy More</Link>
+            <Link to="/">Buy More</Link>
 
         </div>
       )}
       {!state.itemCounter && !state.checkout && (
         <div>
           <h3>Want To Buy?</h3>
-            <Link to="/products">Go To Shop</Link>
+            <Link to="/">Go To Shop</Link>
         </div>
       )}
       </div>
