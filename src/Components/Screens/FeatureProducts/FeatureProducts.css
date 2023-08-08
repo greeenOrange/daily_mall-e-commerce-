@@ -1,6 +1,9 @@
 .feature_products{
     margin-top: var(--size-900);
 }
+.primary_img{
+    max-height: 250px;
+}
 .categories_title, .filter_price_title, .categories_item{
     font-size: 2rem;
     line-height: var(--size-600);

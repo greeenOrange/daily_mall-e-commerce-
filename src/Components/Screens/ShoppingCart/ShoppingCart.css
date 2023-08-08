@@ -31,7 +31,12 @@
 .cart_price {
     color: var(--gray-3);
 }
-
+.shopping_card img{
+    height: 100%;
+}
+.primary_cart{
+    max-height: 250px;
+}
 .cart_stock {
     color: var(--blue-1);
 }

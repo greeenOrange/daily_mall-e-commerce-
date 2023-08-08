@@ -1,6 +1,5 @@
 import { useContext, useState } from 'react';
 import { CartContext } from '../../../Context/CartContextProvider';
-import images from '../../../assets/cart_card.png'
 import './ShoppingCart.css';
 import { checkQuantity } from '../../../Helpers/function';
 import { Link } from 'react-router-dom';
@@ -42,7 +41,7 @@ function ShoppingCart() {
             {state?.selectedItems?.map((pd) => {
               return (
                 <div key={pd?.name} className="shopping_card">
-                  <img src={images} alt="" />
+                  <img src={pd?.image} alt=""  className='primary_cart'/>
                   <div className="shopping_cart">
                     <div className="shopping_cart_details">
                       <div className="cart_disc">

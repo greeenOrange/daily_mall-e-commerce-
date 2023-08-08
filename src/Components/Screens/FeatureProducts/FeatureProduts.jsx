@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faStar, faStarHalf } from '@fortawesome/free-solid-svg-icons'
 import { useContext } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { ProductsContext } from '../../../Context/ProductsContextProvider';
 import './FeatureProducts.css';
 import { CartContext } from '../../../Context/CartContextProvider';
@@ -50,7 +50,7 @@ function FeatureProduts({ searchQuery }) {
                             .map((product, index) => {
                                 return (
                                     <div key={index} className="primary_card">
-                                        <Link to={`/productdetails/${product?.id}`}><img src={product?.image} alt="" /></Link>
+                                        <Link to={`/productdetails/${product?.id}`}><img src={product?.image} alt=""  className="primary_img"/></Link>
                                         <div className="primary_card_body">
                                             <h3 className="card_title">{product?.title}
                                             </h3>
