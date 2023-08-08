@@ -1,7 +1,7 @@
 # e-commerce Web Apps :airplane: [live site](https://stellular-boba-dd261f.netlify.app/)
 
 ## add to cart and buy products
-:black_medium_square: [Live site](https://stellular-boba-dd261f.netlify.app/p)
+:black_medium_square: [Live site](https://stellular-boba-dd261f.netlify.app/)
 :black_medium_small_square: [client site](https://github.com/greeenOrange/daily_mall-e-commerce-)
 
 
