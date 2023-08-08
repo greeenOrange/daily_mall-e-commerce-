@@ -4,6 +4,10 @@
 }
 .primary_card img {
     width: 100%;
+    height: 100%;
+}
+.primary_img{
+    max-height: 250px;
 }
 .primary_card_body{
     padding: 1rem;

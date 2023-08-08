@@ -4,15 +4,18 @@ import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { CartContext } from '../../../Context/CartContextProvider';
 import './Product.css'
+import { shorten } from '../../../Helpers/function';
 
 const Product = ({ product }) => {
-    const { dispatch} = useContext(CartContext)
-    const {name, price, id, image} = product;
+    const { dispatch } = useContext(CartContext)
+    const { title, price, id, image } = product;
     return (
         <div className="primary_card">
-            <Link to={`/productdetails/${id}`}><img src={image} alt="" /></Link>
+            <Link to={`/productdetails/${id}`}>
+                <img src={image} alt=""  className="primary_img"/>
+            </Link>
             <div className="primary_card_body">
-                <h3 className="card_title">{name}
+                <h3 className="card_title">{shorten(title)}
                 </h3>
                 <div className="card_rating_price">
                     <div className="rating">
@@ -26,7 +29,7 @@ const Product = ({ product }) => {
                         <h4 className="price">{price}</h4>
                     </div>
                 </div>
-                <button onClick={() => dispatch({type: "ADD_ITEM", payload: product})} className="add_to_cart card-btn">
+                <button onClick={() => dispatch({ type: "ADD_ITEM", payload: product })} className="add_to_cart card-btn">
                     Add to cart
                     <span className="circle"><FontAwesomeIcon icon={faPlus} /></span>
                 </button>
