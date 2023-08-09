@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faStar, faStarHalf } from '@fortawesome/free-solid-svg-icons'
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ProductsContext } from '../../../Context/ProductsContextProvider';
 import './FeatureProducts.css';
@@ -11,14 +11,57 @@ function FeatureProduts({ searchQuery }) {
     const products = useContext(ProductsContext);
     const { dispatch } = useContext(CartContext);
 
-    let filteredItems = products;
+    const [selectedCategory, setSelectedCategory] = useState(null);
 
-    if (searchQuery) {
-        filteredItems = products.filter((item) =>
-            item?.title.toLowerCase().includes(searchQuery.toLowerCase())
-        );
-    }
-    const menuItems = [...new Set(products.map((pd) => pd.category))];
+    const categories = [...new Set(products.map((product) => product.category))];
+    // Filter products based on selectedCategory and searchQuery
+    const filteredItems = products.filter((item) => {
+        const categoryMatch = !selectedCategory || item.category === selectedCategory;
+        const searchMatch = !searchQuery || item.title.toLowerCase().includes(searchQuery.toLowerCase());
+        return categoryMatch && searchMatch;
+    });
+
+    // let filteredItems = products;
+
+    // if (searchQuery) {
+    //     filteredItems = products.filter((item) =>
+    //         item?.title.toLowerCase().includes(searchQuery.toLowerCase())
+    //     );
+    // }
+
+    const renderProductCards = () => {
+        return filteredItems.map((product, index) => (
+            <div key={index} className="primary_card">
+                <Link to={`/productdetails/${product?.id}`}>
+                    <img src={product?.image} alt="" className="primary_img" />
+                </Link>
+                <div className="primary_card_body">
+                    <h3 className="card_title">{product?.title}</h3>
+                    <div className="card_rating_price">
+                        <div className="rating">
+                            <FontAwesomeIcon icon={faStar} />
+                            <FontAwesomeIcon icon={faStar} />
+                            <FontAwesomeIcon icon={faStar} />
+                            <FontAwesomeIcon icon={faStarHalf} />
+                        </div>
+                        <div className="card_price">
+                            <h6 className="strikeout">$40</h6>
+                            <h4 className="price">{product?.price}</h4>
+                        </div>
+                    </div>
+                    <button
+                        onClick={() => dispatch({ type: 'ADD_ITEM', payload: product })}
+                        className="add_to_cart card-btn"
+                    >
+                        Add to cart
+                        <span className="circle">
+                            <FontAwesomeIcon icon={faPlus} />
+                        </span>
+                    </button>
+                </div>
+            </div>
+        ));
+    };
 
     return (
         <section className="feature_products">
@@ -26,17 +69,16 @@ function FeatureProduts({ searchQuery }) {
                 <div className="feature_product_wrapper">
                     <div className="product_shorting">
                         <h2 className="categories_title">Categories</h2>
-                        {menuItems.map((Val, id) => {
-                            return (
-                                <ul key={id} className="categories_items">
-
-                                    <li className="categories_item">
-                                        <Link className="categories_link" to="">{Val}</Link>
-                                    </li>
-                                </ul>
-                            );
-                        })}
-
+                        <ul className="categories_items">
+                            <li className="categories_item">
+                                <button className="categories_link cursor" onClick={() => setSelectedCategory(null)}>All</button>
+                            </li>
+                            {categories.map((category) => (
+                                <li key={category} className="categories_item">
+                                    <button className="categories_link cursor" onClick={() => setSelectedCategory(category)}>{category}</button>
+                                </li>
+                            ))}
+                        </ul>
                         <h2 className="filter_price_title">Price</h2>
                         <div className="price_filter">
                             <input type="text" placeholder="0" className="input input-bordered w-full max-w-xs price_input" />
@@ -46,36 +88,7 @@ function FeatureProduts({ searchQuery }) {
                         </div>
                     </div>
                     <div className="feture_card_wrapper">
-                        {filteredItems
-                            .map((product, index) => {
-                                return (
-                                    <div key={index} className="primary_card">
-                                        <Link to={`/productdetails/${product?.id}`}><img src={product?.image} alt=""  className="primary_img"/></Link>
-                                        <div className="primary_card_body">
-                                            <h3 className="card_title">{product?.title}
-                                            </h3>
-                                            <div className="card_rating_price">
-                                                <div className="rating">
-                                                    <FontAwesomeIcon icon={faStar} />
-                                                    <FontAwesomeIcon icon={faStar} />
-                                                    <FontAwesomeIcon icon={faStar} />
-                                                    <FontAwesomeIcon icon={faStarHalf} />
-                                                </div>
-                                                <div className="card_price">
-                                                    <h6 className="strikeout">$40</h6>
-                                                    <h4 className="price">{product?.price}</h4>
-                                                </div>
-                                            </div>
-                                            <button
-                                                onClick={() => dispatch({ type: "ADD_ITEM", payload: product })}
-                                                className="add_to_cart card-btn">
-                                                Add to cart
-                                                <span className="circle"><FontAwesomeIcon icon={faPlus} /></span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                );
-                            })}
+                        {renderProductCards()}
                     </div>
                 </div>
             </div>

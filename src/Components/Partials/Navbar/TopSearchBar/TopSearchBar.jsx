@@ -11,7 +11,6 @@ function TopSearchBar({onSearch}) {
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState(null);
 
   useEffect(() => {
     if (searchQuery === "") {
@@ -19,7 +18,7 @@ function TopSearchBar({onSearch}) {
       setShowSuggestions(false);
       return;
     }
-    fetch('http://localhost:5000/products')
+    fetch('https://fakestoreapi.com/products')
       .then((response) => response.json())
       .then((data) => {
         const filteredSuggestions = data.filter((suggestion) =>

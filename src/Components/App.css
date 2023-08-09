@@ -95,6 +95,9 @@ button {
   background-color: transparent;
   cursor: auto;
 }
+.cursor:hover {
+  cursor: pointer;
+}
 
 input,
 textarea,

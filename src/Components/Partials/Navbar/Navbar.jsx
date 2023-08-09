@@ -1,22 +1,34 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import TopSearchBar from './TopSearchBar/TopSearchBar';
 import TopBar from './TopBar/TopBar';
 import './Navbar.css';
 import { Link } from 'react-router-dom';
+import { ProductsContext } from '../../../Context/ProductsContextProvider';
 
-function Navbar({colorTheme, setTheme, darkSide, setDarkSide, onSearch})
-  {
-    const [category, setCategory] = useState(false);
-    const handleCatagroy = () =>{
-      setCategory(!category)
-    }
+function Navbar({ colorTheme, setTheme, darkSide, setDarkSide, onSearch }) {
+  const products = useContext(ProductsContext);
+  const [category, setCategory] = useState(false)
+  const [selectedCategory, setSelectedCategory] = useState(null);
+
+  const handleCatagroy = () => {
+    setCategory(!category)
+  }
+  const handleCategoryFilter = (category) => {
+    setSelectedCategory(category);
+  };
+  
+  const filteredProducts = selectedCategory
+    ? products.filter((product) => product.category === selectedCategory)
+    : products;
+
+  const categories = [...new Set(products.map((product) => product.category))];
 
   return (
     <nav>
       <TopBar colorTheme={colorTheme} setTheme={setTheme} darkSide={darkSide}
-      setDarkSide={setDarkSide} />
-      <TopSearchBar 
-      onSearch={onSearch}
+        setDarkSide={setDarkSide} />
+      <TopSearchBar
+        onSearch={onSearch}
       />
 
       <section className="main_menu">
@@ -28,10 +40,12 @@ function Navbar({colorTheme, setTheme, darkSide, setDarkSide, onSearch})
                   <path d="M9 0V2H0V0H9ZM13 16V18H0V16H13ZM19 8V10H0V8H19Z" fill="white" />
                 </svg>
               </label>
-              <ul className={`menu bg-base-200 w-56 rounded-box ${category=== true ? "block catagroy_dropdown" : "hidden"}`}>
-                <li><a>Item 1</a></li>
-                <li><a>Item 2</a></li>
-                <li><a>Item 3</a></li>
+              <ul className={`menu bg-base-200 w-56 rounded-box ${category === true ? "block catagroy_dropdown" : "hidden"}`}>
+                {categories.map((category) => (
+                  <li key={category}>
+                    <button onClick={() => handleCategoryFilter(category)}>{category}</button>
+                  </li>
+                ))}
               </ul>
               <p className="catagory_title">Categories</p>
               <span className="bottom_arrow"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="10" viewBox="0 0 16 10" fill="none">
