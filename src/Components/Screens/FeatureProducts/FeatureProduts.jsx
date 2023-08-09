@@ -61,15 +61,15 @@ function FeatureProduts({ searchQuery }) {
         <section className="feature_products">
             <div className="container">
                 <div className="feature_product_wrapper">
-                    <div className="product_shorting">
+                    <div className="product_shorting sticky top-0">
                         <h2 className="categories_title">Categories</h2>
                         <ul className="categories_items">
-                            <li className="categories_item">
-                                <button className="categories_link cursor" onClick={() => setSelectedCategory(null)}>All</button>
+                            <li className="categories_item text-black dark:text-white">
+                                <button className="categories_link cursor text-black dark:text-white" onClick={() => setSelectedCategory(null)}>All</button>
                             </li>
                             {categories.map((category) => (
-                                <li key={category} className="categories_item">
-                                    <button className="categories_link cursor" onClick={() => setSelectedCategory(category)}>{category}</button>
+                                <li key={category} className="categories_item text-black dark:text-white">
+                                    <button className="categories_link cursor text-black dark:text-white" onClick={() => setSelectedCategory(category)}>{category}</button>
                                 </li>
                             ))}
                         </ul>
