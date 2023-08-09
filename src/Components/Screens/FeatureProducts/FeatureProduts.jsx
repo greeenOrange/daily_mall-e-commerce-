@@ -61,7 +61,7 @@ function FeatureProduts({ searchQuery }) {
         <section className="feature_products">
             <div className="container">
                 <div className="feature_product_wrapper">
-                    <div className="product_shorting sticky top-0">
+                    <div className="product_shorting lg:h-screen sticky top-0">
                         <h2 className="categories_title">Categories</h2>
                         <ul className="categories_items">
                             <li className="categories_item text-black dark:text-white">
