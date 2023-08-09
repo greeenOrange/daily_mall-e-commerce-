@@ -9,8 +9,14 @@ import CartContextProvider from '../Context/CartContextProvider';
 import FeatureProduts from './Screens/FeatureProducts/FeatureProduts';
 import ShoppingCart from './Screens/ShoppingCart/ShoppingCart';
 import { useState } from 'react';
+import UseDarkSide from './Partials/UseDarkSide/UseDarkSide';
 
 function App() {
+  const [colorTheme, setTheme] = UseDarkSide();
+    const [darkSide, setDarkSide] = useState(
+        colorTheme === "light" ? true : false
+    );
+
   const [searchQuery, setSearchQuery] = useState("");
   
   const handleSearch = (query) => {
@@ -18,10 +24,16 @@ function App() {
   };
 
   return (
+  <div className="h-screen w-full overflow-hidden bg-white
+  shadow-md dark:bg-gray-800 dark:border-gray-700 scroll_bar"> 
     <ProductsContextProvider>
       <CartContextProvider>
         <BrowserRouter>
-          <Navbar 
+          <Navbar
+          colorTheme={colorTheme} 
+          setTheme={setTheme} 
+          darkSide={darkSide} 
+          setDarkSide={setDarkSide} 
           onSearch={handleSearch}
           />
           <Routes>
@@ -37,6 +49,7 @@ function App() {
         </BrowserRouter>
       </CartContextProvider>
     </ProductsContextProvider>
+  </div>
   )
 }
 export default App

@@ -53,13 +53,13 @@ function TopSearchBar({onSearch}) {
   };
 
   return (
-    <section className="top_search_bar">
+    <section className="top_search_bar text-black dark:text-white">
       <div className="container">
         <div className="second_nav">
           <div className="left_bar">
             <a className="logo text-black dark:text-white" href="/"><h2>Daily mall</h2></a>
-            <div className="form-control search_input">
-              <div className="input-group">
+            <div className="form-control search_input text-black dark:text-white">
+              <div className="input-group text-black dark:text-white">
                 <input type="text"
                   placeholder="Search…"
                   className="input input-bordered"
@@ -69,12 +69,12 @@ function TopSearchBar({onSearch}) {
                 />
                 <button
                   onClick={handleSearch}
-                  className="btn">
+                  className="btn text-black dark:text-white">
                   Search
                 </button>
               </div>
               {showSuggestions && (
-                <ul className="suggestions">
+                <ul className="suggestions text-black dark:text-white">
                   {suggestions.map((suggestion, index) => (
                     <li key={index} onClick={() => handleSuggestionClick(suggestion)}>
                       {suggestion?.title}
@@ -84,19 +84,19 @@ function TopSearchBar({onSearch}) {
               )}
             </div>
           </div>
-          <ul className="customer_cart">
+          <ul className="customer_cart text-black dark:text-white">
             <li className="users_cart">
               <a href=""><FontAwesomeIcon icon={faHeart} /></a>
             </li>
             <li className="dropdown user_dropdown">
               <label tabIndex={0} className="btn user_menu m-1"><FontAwesomeIcon icon={faUser} /></label>
-              <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+              <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52 text-black dark:text-white">
                 <li><a>category 1</a></li>
                 <li><a>category 2</a></li>
               </ul>
 
             </li>
-            <li className="users_cart">
+            <li className="users_cart text-black dark:text-white">
               <Link to="/cart"><FontAwesomeIcon icon={faShoppingBasket} /></Link>
               {state.itemCounter}
             </li>

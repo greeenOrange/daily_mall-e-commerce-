@@ -1,4 +1,4 @@
-import React from 'react';
+import  'react';
 import './TopBar.css'
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -24,7 +24,7 @@ function TopBar({colorTheme, setTheme, darkSide,
                   <summary className="text-black dark:text-white">
                     English
                   </summary>
-                  <ul className="p-2 bg-base-100">
+                  <ul className="p-2 bg-base-100 text-black dark:text-white">
                     <li><a>Bangla</a></li>
                     <li><a>Spanice</a></li>
                   </ul>
