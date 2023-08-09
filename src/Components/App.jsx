@@ -29,7 +29,6 @@ function App() {
             <Route path="/home" element={<Home />} />
             <Route path="/productdetails/:id" element={<ProductDetails />} />
             <Route path="/featureproducts" element={<FeatureProduts 
-            onSearch={handleSearch} 
             searchQuery={searchQuery}
             />} 
             />

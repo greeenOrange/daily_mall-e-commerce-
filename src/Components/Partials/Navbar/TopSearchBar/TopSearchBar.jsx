@@ -21,8 +21,8 @@ function TopSearchBar({onSearch}) {
     fetch('https://fakestoreapi.com/products')
       .then((response) => response.json())
       .then((data) => {
-        const filteredSuggestions = data.filter((suggestion) =>
-          suggestion.name.toLowerCase().includes(searchQuery.toLowerCase())
+        const filteredSuggestions = data?.filter((suggestion) =>
+          suggestion?.title?.toLowerCase().includes(searchQuery?.toLowerCase())
         );
         setSuggestions(filteredSuggestions);
         setShowSuggestions(true);
@@ -46,10 +46,10 @@ function TopSearchBar({onSearch}) {
   };
 
   const handleSuggestionClick = (suggestion) => {
-    setSearchQuery(suggestion.name);
+    setSearchQuery(suggestion?.title);
     setSuggestions([]);
     setShowSuggestions(false);
-    onSearch(suggestion.name);
+    onSearch(suggestion?.title);
   };
 
   return (
@@ -77,7 +77,7 @@ function TopSearchBar({onSearch}) {
                 <ul className="suggestions">
                   {suggestions.map((suggestion, index) => (
                     <li key={index} onClick={() => handleSuggestionClick(suggestion)}>
-                      {suggestion.name}
+                      {suggestion?.title}
                     </li>
                   ))}
                 </ul>

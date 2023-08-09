@@ -12,22 +12,16 @@ function FeatureProduts({ searchQuery }) {
     const { dispatch } = useContext(CartContext);
 
     const [selectedCategory, setSelectedCategory] = useState(null);
+    const [priceRange, setPriceRange] = useState({ min: 0, max: 100 });
 
     const categories = [...new Set(products.map((product) => product.category))];
-    // Filter products based on selectedCategory and searchQuery
+
     const filteredItems = products.filter((item) => {
-        const categoryMatch = !selectedCategory || item.category === selectedCategory;
-        const searchMatch = !searchQuery || item.title.toLowerCase().includes(searchQuery.toLowerCase());
-        return categoryMatch && searchMatch;
+        const categoryMatch = !selectedCategory || item?.category === selectedCategory;
+        const searchMatch = !searchQuery || item?.title.toLowerCase().includes(searchQuery?.toLowerCase());
+        const priceMatch = item?.price >= priceRange.min && item?.price <= priceRange.max;
+        return categoryMatch && searchMatch && priceMatch;
     });
-
-    // let filteredItems = products;
-
-    // if (searchQuery) {
-    //     filteredItems = products.filter((item) =>
-    //         item?.title.toLowerCase().includes(searchQuery.toLowerCase())
-    //     );
-    // }
 
     const renderProductCards = () => {
         return filteredItems.map((product, index) => (
@@ -81,10 +75,24 @@ function FeatureProduts({ searchQuery }) {
                         </ul>
                         <h2 className="filter_price_title">Price</h2>
                         <div className="price_filter">
-                            <input type="text" placeholder="0" className="input input-bordered w-full max-w-xs price_input" />
+                            <input 
+                             onChange={(e) => setPriceRange({ ...priceRange, min: e.target.value })}
+                            type="text" 
+                            placeholder="0" className="input input-bordered w-full max-w-xs price_input" />
                             <h4 className="to_divider">To</h4>
-                            <input type="text" placeholder="100" className="input input-bordered w-full max-w-xs price_input" />
-                            <button className="btn">go</button>
+                            <input 
+                            onChange={(e) => setPriceRange({ ...priceRange, max: e.target.value })} 
+                            type="text" 
+                            placeholder="100" 
+                            className="input input-bordered w-full max-w-xs price_input" />
+                            <button
+                            onClick={() => {
+                                setPriceRange({
+                                    min: parseFloat(priceRange.min),
+                                    max: parseFloat(priceRange.max)
+                                });
+                            }}
+                            className="btn">go</button>
                         </div>
                     </div>
                     <div className="feture_card_wrapper">
