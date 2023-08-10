@@ -2,6 +2,7 @@ import { useReducer, createContext } from "react";
 
 const initialState = {
   selectedItems: [],
+  wishlistItems: [],
   itemCounter: 0,
   total: 0,
   deliveryCost: 0,
@@ -90,6 +91,24 @@ const cartReducer = (state, action) => {
         ...cartReducer(state, { type: "CHANGE_QUANTITY", payload: { id: action.payload.id, change: -1 } }),
       };
 
+
+    case "ADD_TO_WISHLIST":
+      if (!state.wishlistItems.find((item) => item.id === action.payload.id)) {
+        const newWishlistItems = [...state.wishlistItems, { ...action.payload }];
+        return {
+          ...state,
+          wishlistItems: newWishlistItems,
+        };
+      }
+      return state;
+
+    case "REMOVE_FROM_WISHLIST":
+      const newWishlist = state.wishlistItems.filter((item) => item.id !== action.payload.id);
+      return {
+        ...state,
+        wishlistItems: newWishlist,
+      };
+
     case "APPLY_PROMO":
       return {
         ...state,
@@ -98,7 +117,7 @@ const cartReducer = (state, action) => {
       };
 
     case "CHECKOUT":
-        
+
       return {
         ...state,
         selectedItems: [],

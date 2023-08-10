@@ -10,6 +10,7 @@ import FeatureProduts from './Screens/FeatureProducts/FeatureProduts';
 import ShoppingCart from './Screens/ShoppingCart/ShoppingCart';
 import { useState } from 'react';
 import UseDarkSide from './Partials/UseDarkSide/UseDarkSide';
+import Wishlist from './Screens/Wishlist/Wishlist';
 
 function App() {
   const [colorTheme, setTheme] = UseDarkSide();
@@ -44,6 +45,7 @@ function App() {
             searchQuery={searchQuery}
             />} 
             />
+            <Route path="/wishlist" element={<Wishlist />} />
             <Route path="/cart" element={<ShoppingCart />} />
           </Routes>
         </BrowserRouter>

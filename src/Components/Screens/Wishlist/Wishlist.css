@@ -1,0 +1,15 @@
+@media (max-width: 30em) {
+    .shopping_card{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 4rem;
+        margin-bottom: 1rem;
+    }
+    .shopping_cart{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+}

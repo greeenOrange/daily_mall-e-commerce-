@@ -15,12 +15,10 @@ function ShoppingCart() {
 
   const handlePromoCodeChange = (event) => {
     const newPromoCode = event.target.value;
-    console.log("New Promo Code:", newPromoCode);
     setPromoCode(newPromoCode);
   };
 
   const handleApplyPromo = () => {
-    console.log("Applying Promo Code:", promoCode);
     dispatch({ type: "APPLY_PROMO", payload: promoCode });
     setPromoCode("");
   };

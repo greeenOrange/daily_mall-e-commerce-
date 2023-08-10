@@ -83,6 +83,10 @@
 .suggestions li{
     font-size: 1.2rem;
 }
+.count_items{
+    color: var(--black-2);
+    font-weight: 600;
+}
 @media (min-width: 50em){
 .second_nav{
     display: flex;

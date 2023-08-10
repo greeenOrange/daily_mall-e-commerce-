@@ -3,7 +3,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faStar, faStarHalf } from '@fortawesome/free-solid-svg-icons';
-import product from '../../../assets/brans/shose-1.png';
 import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/thumbs';
@@ -14,33 +13,16 @@ import { IsInCart, checkQuantity } from '../../../Helpers/function';
 
 const ProductDetails = () => {
     const [details, setDetails] = useState({});
-    console.log(details);
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
     const [ToggleState, setToggleState] = useState(1);
     const { id } = useParams();
     const { state, dispatch } = useContext(CartContext);
-
+    
     const toggleTab = (index) => {
         setToggleState(index);
     };
 
     const getActiveClass = (index, className) => ToggleState === index ? className : "";
-
-    // const increase = () => {
-    //     setCounter(count => count + 1);
-    //     setWarning("")
-    // };
-
-    // const decrease = () => {
-    //     if (counter <= 1) {
-    //         setWarning("At least 1 counted")
-    //     } else if (counter >= 1) {
-    //         setCounter(count => count - 1);
-    //         setWarning("")
-    //     } else {
-    //         return ''
-    //     }
-    // };
 
     useEffect(() => {
         fetch(`https://fakestoreapi.com/products/${id}`)
@@ -100,7 +82,7 @@ const ProductDetails = () => {
                         </Swiper>
                     </div>
                     <div className="product_right">
-                        <h2 className="details_title">{details.name}</h2>
+                        <h2 className="details_title">{details?.title}</h2>
                         <div className="details_rating rating">
                             <FontAwesomeIcon icon={faStar} />
                             <FontAwesomeIcon icon={faStar} />
@@ -166,7 +148,11 @@ const ProductDetails = () => {
                                     <button
                                     className="btn btn-disabled" tabIndex="-1" role="button" aria-disabled="true">Add To Cart</button>
                                 }
-                                <button className="add_favourite"><FontAwesomeIcon icon={faHeart} /></button>
+                                 <button
+                               onClick={() =>
+                                dispatch({ type: "ADD_TO_WISHLIST", payload: details })
+                            }
+                                className="add_favourite"><FontAwesomeIcon icon={faHeart} /></button>
                             </div>
                         </div>
 
