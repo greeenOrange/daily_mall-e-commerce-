@@ -1,15 +1,28 @@
-import axios from "axios";
 import { createContext, useEffect, useState } from "react";
 
 export const ProductsContext = createContext();
 
-export function ProductsContextProvider(props){
+export function ProductsContextProvider(props) {
     const [products, setProducts] = useState([]);
+    const [error, setError] = useState('');
+    const [isLoading, setIsLoading] = useState(true);
 
     const fetchData = () => {
-        return axios.get("https://fakestoreapi.com/products")
-              .then((response) => setProducts(response.data));
-      }
+        fetch('https://fakestoreapi.com/products')
+            .then((response) => response.json())
+            .then((data) => {
+                setProducts(data);
+                setError(null);
+            })
+            .catch((err) => {
+                setError(err.message);
+                setProducts(null);
+            })
+            .finally(() => {
+                setIsLoading(false);
+            });
+
+    }
 
     useEffect(() => {
         fetchData()

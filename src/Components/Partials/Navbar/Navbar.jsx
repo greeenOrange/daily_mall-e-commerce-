@@ -42,7 +42,7 @@ function Navbar({ colorTheme, setTheme, darkSide, setDarkSide, onSearch }) {
                   <path d="M9 0V2H0V0H9ZM13 16V18H0V16H13ZM19 8V10H0V8H19Z" fill="white" />
                 </svg>
               </label>
-              <ul className={`menu bg-base-200 w-56 rounded-box ${category === true ? "block catagroy_dropdown" : "hidden"}`}>
+              <ul className={`menu bg-base-200 rounded-box ${category === true ? "block catagroy_dropdown" : "hidden"}`}>
                 {categories.map((category) => (
                   <li key={category}>
                     <button onClick={() => handleCategoryFilter(category)}>{category}</button>
@@ -57,7 +57,7 @@ function Navbar({ colorTheme, setTheme, darkSide, setDarkSide, onSearch }) {
             </div>
             <ul aria-label="Primary" role="list" className="nav_list text-black dark:text-white">
               <li><Link className="text-black dark:text-white" to="/">Home</Link></li>
-              <li><Link className="text-black dark:text-white" to="">All Brands</Link></li>
+              <li><Link className="text-black dark:text-white" to="/shops">Shops</Link></li>
               <li><Link className="text-black dark:text-white" to="">Discount Products</Link></li>
               <li><Link className="text-black dark:text-white" to="">All Sellers</Link></li>
               <li><Link className="text-black dark:text-white" to="">Seller Zone</Link></li>

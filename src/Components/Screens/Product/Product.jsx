@@ -5,10 +5,16 @@ import { useContext } from 'react';
 import { CartContext } from '../../../Context/CartContextProvider';
 import './Product.css'
 import { shorten } from '../../../Helpers/function';
+import { toast } from 'react-toastify';
 
 const Product = ({ product }) => {
-    const { dispatch } = useContext(CartContext)
+    const { dispatch } = useContext(CartContext);
     const { title, price, id, image } = product;
+
+    const handleAddTOCart = (product) =>{
+        dispatch({ type: "ADD_ITEM", payload: product })
+        toast.success("successfully added to cart")
+    }
     return (
         <div className="primary_card">
             <Link to={`/productdetails/${id}`}>
@@ -29,7 +35,7 @@ const Product = ({ product }) => {
                         <h4 className="price">{price}</h4>
                     </div>
                 </div>
-                <button onClick={() => dispatch({ type: "ADD_ITEM", payload: product })} className="add_to_cart card-btn">
+                <button onClick={() => handleAddTOCart(product)} className="add_to_cart card-btn">
                     Add to cart
                     <span className="circle"><FontAwesomeIcon icon={faPlus} /></span>
                 </button>

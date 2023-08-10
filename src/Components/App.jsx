@@ -1,5 +1,4 @@
-import 'react';
-import './App.css'
+import { useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './Screens/Home/Home';
 import ProductDetails from './Screens/ProductDetails/ProductDetails';
@@ -8,9 +7,11 @@ import { ProductsContextProvider } from '../Context/ProductsContextProvider';
 import CartContextProvider from '../Context/CartContextProvider';
 import FeatureProduts from './Screens/FeatureProducts/FeatureProduts';
 import ShoppingCart from './Screens/ShoppingCart/ShoppingCart';
-import { useState } from 'react';
 import UseDarkSide from './Partials/UseDarkSide/UseDarkSide';
 import Wishlist from './Screens/Wishlist/Wishlist';
+import { ToastContainer } from 'react-toastify';
+import './App.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const [colorTheme, setTheme] = UseDarkSide();
@@ -41,13 +42,14 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
             <Route path="/productdetails/:id" element={<ProductDetails />} />
-            <Route path="/featureproducts" element={<FeatureProduts 
+            <Route path="/shops" element={<FeatureProduts 
             searchQuery={searchQuery}
             />} 
             />
             <Route path="/wishlist" element={<Wishlist />} />
             <Route path="/cart" element={<ShoppingCart />} />
           </Routes>
+          <ToastContainer />
         </BrowserRouter>
       </CartContextProvider>
     </ProductsContextProvider>

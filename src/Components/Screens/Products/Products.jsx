@@ -1,7 +1,6 @@
 import 'react';
 import { useEffect, useState } from 'react';
 import Product from '../Product/Product';
-import uuid from 'react-uuid';
 
 function Products() {
     const [products, setProducts] = useState([]);
@@ -23,7 +22,6 @@ function Products() {
             })
             .finally(() => {
                 setIsLoading(false);
-                
             });
 
     }, []);
@@ -41,11 +39,10 @@ function Products() {
                       </div>
                     }
                     {sliceData &&
-                        sliceData.map(product => (
+                        sliceData.map((product, index) => (
                             <Product 
-                            key={uuid()}
+                            key={index}
                             product={product}
-                            UniqueID={uuid()}
                             />
 
                         )

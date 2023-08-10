@@ -10,12 +10,10 @@ const initialState = {
   promoDiscount: 0,
   checkout: false,
 };
-
 const DELIVERY_COST_THRESHOLDS = {
   100: 50,
   2000: 20,
 };
-
 const TAX_RATE = 0.15;
 
 const calculateDeliveryCost = (totalCost) => {
@@ -61,6 +59,7 @@ const cartReducer = (state, action) => {
 
     case "REMOVE_ITEM":
       const newItemsRemove = state.selectedItems.filter((item) => item.id !== action.payload.id);
+      // toast.error('Item removed from cart');
       return {
         ...state,
         selectedItems: newItemsRemove,
@@ -117,7 +116,7 @@ const cartReducer = (state, action) => {
       };
 
     case "CHECKOUT":
-
+      // toast.success('Checkout successful');
       return {
         ...state,
         selectedItems: [],
