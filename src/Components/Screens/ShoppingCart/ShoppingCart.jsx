@@ -48,12 +48,14 @@ function ShoppingCart() {
   return (
     <section className="cart_container">
       <div className="container">
-        <h2 className="cart_title">Shopping cart items</h2>
-        <p className="cart_items">items:{state.itemCounter}</p>
+    {!state.itemCounter >= 1 || !state.checkout ?
+        <div>
+          <h2 className="cart_title">Shopping cart items</h2>
+        <p className="cart_items">items: {state.itemCounter}</p>
         <div className="cart_items_wrapper">
           <div className="grid grid-cols-1 gap-6 h-full">
             
-            {state?.selectedItems.length >= 1 ?
+            {state?.itemCounter >= 1 ?
               <div className=''>
             <button
             onClick={() => dispatch({ type: "CLEAR" })}
@@ -121,7 +123,10 @@ function ShoppingCart() {
             })}
             </div>:
             <div className="flex justify-center items-center flex-col gap-4">
-              <p className="text-lg">Your cart is currently empty.</p>
+              {!state.checkout ?<p className="text-lg">Your cart is currently empty.</p>
+              :
+              <p className="text-lg text-green-500">Checked Out Successfully !.</p>
+              }
             <Link className="text-3xl text-blue-500" to="/shops"> <FontAwesomeIcon icon={faShoppingBasket} /> Return Shop</Link>
             </div>
             }
@@ -156,19 +161,14 @@ function ShoppingCart() {
             </div>
           </div>
         </div>
-        {state.checkout && (
           <div>
-            <h3>Checked Out Successfully !</h3>
-            <Link to="/">Buy More</Link>
-
           </div>
-        )}
-        {!state.itemCounter && !state.checkout && (
-          <div>
-            <h3>Want To Buy?</h3>
-            <Link to="/">Go To Shop</Link>
-          </div>
-        )}
+           </div>: 
+           <div className="flex justify-center flex-col items-center"> 
+           <h3 className="text-lg">Want To Buy?</h3>
+           <Link className="text-3xl text-blue-500" to="/shops"> <FontAwesomeIcon icon={faShoppingBasket} /> Return Shop</Link>
+           </div>
+        }
       </div>
     </section>
   )
