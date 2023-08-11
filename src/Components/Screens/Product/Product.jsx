@@ -11,7 +11,7 @@ import Rating from 'react-rating';
 const Product = ({ product }) => {
     const { dispatch } = useContext(CartContext);
     const { title, price, id, image, rating } = product;
-    console.log(rating);
+
 
     const handleAddTOCart = (product) => {
         dispatch({ type: "ADD_ITEM", payload: product })

@@ -59,7 +59,6 @@ const cartReducer = (state, action) => {
 
     case "REMOVE_ITEM":
       const newItemsRemove = state.selectedItems.filter((item) => item.id !== action.payload.id);
-      // toast.error('Item removed from cart');
       return {
         ...state,
         selectedItems: newItemsRemove,
