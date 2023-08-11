@@ -4,6 +4,9 @@ import { CartContext } from '../../../Context/CartContextProvider';
 import './Wishlist.css'
 import { IsInCart } from '../../../Helpers/function';
 import { toast } from 'react-toastify';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 function Wishlist() {
   const { state, dispatch } = useContext(CartContext);
@@ -50,22 +53,31 @@ function Wishlist() {
               <button
                 onClick={() => dispatch({ type: "REMOVE_FROM_WISHLIST", payload: pd })}
                 className="self-end btn btn-error text-white">Remove</button>
-              {!IsInCart(state, pd.id) ? (
                 <button
                   onClick={() => handleWishlistToCart(pd)}
                   className="add_to_cart_detailst">Add To Cart</button>
-              ) : (
-                <button
-                  className="btn btn-disabled" tabIndex="-1" role="button" aria-disabled="true">Add To Cart</button>
-              )}
+
             </div>
           </div>
         ))}
       </div>
     ) : (
-      <p className='text-error text-3xl flex justify-center items-center'>
-        {state?.selectedItems?.length > 0 ? "Wishlist is empty" : "Cart is empty"}
-      </p>
+      
+      <div>
+        <div className="flex justify-center flex-col items-center"> 
+       {state?.selectedItems?.length > 0 ?
+       <div>
+        <h3 className="text-lg">Wishlist is empty</h3>
+           <Link className="text-3xl text-blue-500" to="/shops"> <FontAwesomeIcon icon={faShoppingBasket} /> Return Shop</Link>
+       </div>: 
+          <div>
+             <h3 className="text-lg">Cart and Wishlist is empty</h3>
+           <Link className="text-3xl text-blue-500" to="/shops"> <FontAwesomeIcon icon={faShoppingBasket} /> Return Shop</Link>
+            </div>
+           
+          }
+          </div>
+      </div>
     )}
   </div>
   )
