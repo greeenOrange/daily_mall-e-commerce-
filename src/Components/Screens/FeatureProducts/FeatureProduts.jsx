@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { ProductsContext } from '../../../Context/ProductsContextProvider';
 import './FeatureProducts.css';
 import { CartContext } from '../../../Context/CartContextProvider';
+import { toast } from 'react-toastify';
 
 function FeatureProduts({ searchQuery }) {
 
@@ -22,6 +23,11 @@ function FeatureProduts({ searchQuery }) {
         const priceMatch = item?.price >= priceRange.min && item?.price <= priceRange.max;
         return categoryMatch && searchMatch && priceMatch;
     });
+
+    const handleAddTOCart = (product) =>{
+        dispatch({ type: "ADD_ITEM", payload: product })
+        toast.success("successfully added to cart")
+    }
 
     const renderProductCards = () => {
         return filteredItems.map((product, index) => (
@@ -44,7 +50,7 @@ function FeatureProduts({ searchQuery }) {
                         </div>
                     </div>
                     <button
-                        onClick={() => dispatch({ type: 'ADD_ITEM', payload: product })}
+                        onClick={() => handleAddTOCart(product)}
                         className="add_to_cart card-btn"
                     >
                         Add to cart

@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart, faStar, faStarHalf } from '@fortawesome/free-solid-svg-icons';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/thumbs';
@@ -10,6 +10,8 @@ import './ProductDetails.css';
 import { CartContext } from '../../../Context/CartContextProvider';
 import { useParams } from 'react-router-dom';
 import { IsInCart, checkQuantity } from '../../../Helpers/function';
+import { toast } from 'react-toastify';
+import Rating from 'react-rating';
 
 const ProductDetails = () => {
     const [details, setDetails] = useState({});
@@ -30,6 +32,15 @@ const ProductDetails = () => {
             .then(data => setDetails(data))
             .catch(error => (console.log(error)))
     }, [id]);
+
+    const handleAddTOCart = (details) =>{
+        dispatch({ type: "ADD_ITEM", payload: details })
+        toast.success("successfully added to cart")
+    }
+    const handleAddTOWishList = (details) =>{
+        dispatch({ type: "ADD_TO_WISHLIST", payload: details })
+        toast.success("successfully added to wishlist")
+    }
 
     return (
         <section className="product_details">
@@ -84,11 +95,14 @@ const ProductDetails = () => {
                     <div className="product_right">
                         <h2 className="details_title">{details?.title}</h2>
                         <div className="details_rating rating">
-                            <FontAwesomeIcon icon={faStar} />
-                            <FontAwesomeIcon icon={faStar} />
-                            <FontAwesomeIcon icon={faStar} />
-                            <FontAwesomeIcon icon={faStarHalf} />
-                            <span className="rating_in_text">3 Reviews</span>
+                        <Rating
+                            readonly
+                            className="text-yellow-500"
+                            initialRating={details?.rating?.rate}
+                            emptySymbol="fa fa-star-o fa-2x"
+                            fullSymbol="fa fa-star fa-2x"
+                        />
+                            <span className="rating_in_text">{details?.rating?.rate} reviews</span>
                         </div>
                         <div className="details_price flex items-center gap-6">
                             <h6 className="details_strike strikeout">$30</h6>
@@ -141,17 +155,13 @@ const ProductDetails = () => {
                                 <button className="buy_now">Buy Now</button>
                                 { !IsInCart(state, details.id) ?
                                 <button
-                                    onClick={() =>
-                                        dispatch({ type: "ADD_ITEM", payload: details })
-                                    }
+                                    onClick={() =>  handleAddTOCart(details)}
                                     className="add_to_cart_detailst">Add To Cart</button> :
                                     <button
                                     className="btn btn-disabled" tabIndex="-1" role="button" aria-disabled="true">Add To Cart</button>
                                 }
                                  <button
-                               onClick={() =>
-                                dispatch({ type: "ADD_TO_WISHLIST", payload: details })
-                            }
+                               onClick={() => handleAddTOWishList(details)}
                                 className="add_favourite"><FontAwesomeIcon icon={faHeart} /></button>
                             </div>
                         </div>
