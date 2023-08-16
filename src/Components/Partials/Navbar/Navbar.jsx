@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { ProductsContext } from '../../../Context/ProductsContextProvider';
 
 function Navbar({ colorTheme, setTheme, darkSide, setDarkSide, onSearch }) {
+  
   const products = useContext(ProductsContext);
   const [category, setCategory] = useState(false)
   const [selectedCategory, setSelectedCategory] = useState(null);

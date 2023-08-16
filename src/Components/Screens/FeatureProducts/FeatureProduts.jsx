@@ -6,6 +6,7 @@ import { ProductsContext } from '../../../Context/ProductsContextProvider';
 import './FeatureProducts.css';
 import { CartContext } from '../../../Context/CartContextProvider';
 import { toast } from 'react-toastify';
+import Rating from 'react-rating';
 
 function FeatureProduts({ searchQuery }) {
 
@@ -39,10 +40,13 @@ function FeatureProduts({ searchQuery }) {
                     <h3 className="card_title">{product?.title}</h3>
                     <div className="card_rating_price">
                         <div className="rating">
-                            <FontAwesomeIcon icon={faStar} />
-                            <FontAwesomeIcon icon={faStar} />
-                            <FontAwesomeIcon icon={faStar} />
-                            <FontAwesomeIcon icon={faStarHalf} />
+                        <Rating
+                            readonly
+                            className="text-yellow-500"
+                            initialRating={product?.rating?.rate}
+                            emptySymbol="fa fa-star-o"
+                            fullSymbol="fa fa-star"
+                        />
                         </div>
                         <div className="card_price">
                             <h6 className="strikeout">$40</h6>

@@ -12,6 +12,7 @@ import Wishlist from './Screens/Wishlist/Wishlist';
 import { ToastContainer } from 'react-toastify';
 import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
+import Footer from './Partials/Footer/Footer';
 
 function App() {
   const [colorTheme, setTheme] = UseDarkSide();
@@ -49,6 +50,7 @@ function App() {
             <Route path="/wishlist" element={<Wishlist />} />
             <Route path="/cart" element={<ShoppingCart />} />
           </Routes>
+          <Footer />
           <ToastContainer />
         </BrowserRouter>
       </CartContextProvider>
