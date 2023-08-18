@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { CartContext } from '../../../Context/CartContextProvider';
 import './ShoppingCart.css';
 import { checkQuantity } from '../../../Helpers/function';
@@ -16,6 +16,7 @@ function ShoppingCart() {
     const current = new Date();
     current.setDate(current.getDate() + 10);
     return current.toDateString();
+
   });
 
   const handleOpenModal = () => {
@@ -28,6 +29,7 @@ function ShoppingCart() {
   
   const handleConfirmRemove = (pd) => {
     dispatch({ type: "REMOVE_ITEM", payload: pd })  
+    localStorage.removeItem(pd?.id);
     toast.error('Item removed from cart') 
     handleCloseModal();
   };
@@ -42,6 +44,7 @@ function ShoppingCart() {
   };
   const handleCheckOut = () =>{
     dispatch({ type: "CHECKOUT" })
+    localStorage.clear();
     toast.success("successfully Check out!");
   }
 

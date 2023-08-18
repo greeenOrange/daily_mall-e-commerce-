@@ -3,6 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {  faHeadset, faPhoneVolume, faSms } from '@fortawesome/free-solid-svg-icons'
 import { faFacebook, faInstagram, faLinkedin, faTwitter } from '@fortawesome/free-brands-svg-icons'
 import { Link } from 'react-router-dom';
+import payment from '../../../assets/brands/payment-1.png'
+import payment2 from '../../../assets/brands/payment-2.png'
 import './Footer.css'
 const Footer = () => {
   return (
@@ -71,11 +73,12 @@ const Footer = () => {
            <span><FontAwesomeIcon icon={faPhoneVolume}/>+565889023795</span>
            <span><FontAwesomeIcon icon={faSms}/>Contact@daily mall.com</span>
            <span><FontAwesomeIcon icon={faHeadset}/>Supprt centerp</span>
-           <div className="payment">
+           <div className="payment d-block">
             <img
-            src="/assets/icons/payment-1.png"
+            src={payment}
             alt='payment'
             />
+            <img src={payment2} alt="bkash" />
            </div>
            </div>
          </div>
