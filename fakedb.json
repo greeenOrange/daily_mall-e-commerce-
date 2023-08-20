@@ -5,9 +5,9 @@
       "description": "High-quality denim jeans for everyday wear.",
       "price": 49.99,
       "images": [
-        "https://example.com/images/jeans1.jpg",
-        "https://example.com/images/jeans2.jpg",
-        "https://example.com/images/jeans3.jpg"
+        "https://fashionstyle-bd.com/upload/service/1656923017.jpg",
+        "https://fashionstyle-bd.com/upload/service/1656923078.jpg",
+        "https://fashionstyle-bd.com/upload/service/1656923207.jpg"
       ],
       "category": ["Men", "Women"],
       "colors": ["Blue", "Black", "Gray"],
@@ -18,9 +18,9 @@
       "description": "A stunning dress perfect for parties and special occasions.",
       "price": 89.99,
       "images": [
-        "https://example.com/images/dress1.jpg",
-        "https://example.com/images/dress2.jpg",
-        "https://example.com/images/dress3.jpg"
+        "https://fashionstyle-bd.com/upload/service/1656918882.jpg",
+        "https://fashionstyle-bd.com/upload/service/1656918897.jpg",
+        "https://fashionstyle-bd.com/upload/service/1656919107.jpg"
       ],
       "category": ["Women"],
       "colors": ["Red", "Black", "White"],
@@ -31,9 +31,9 @@
       "description": "Comfortable and stylish t-shirt with unique prints.",
       "price": 24.99,
       "images": [
-        "https://example.com/images/tshirt1.jpg",
-        "https://example.com/images/tshirt2.jpg",
-        "https://example.com/images/tshirt3.jpg"
+        "https://fashionstyle-bd.com/upload/service/1656924310.jpg",
+        "https://fashionstyle-bd.com/upload/service/1656924490.jpg",
+        "https://fashionstyle-bd.com/upload/service/1656924140.jpg"
       ],
       "category": ["Men", "Women"],
       "colors": ["White", "Black", "Gray"],
@@ -44,11 +44,11 @@
       "description": "Warm and cozy sweater for chilly days.",
       "price": 39.99,
       "images": [
-        "https://example.com/images/sweater1.jpg",
-        "https://example.com/images/sweater2.jpg",
-        "https://example.com/images/sweater3.jpg"
+        "https://fashionstyle-bd.com/upload/service/1656924181.jpg",
+        "https://fashionstyle-bd.com/upload/service/1656924168.jpg",
+        "https://fashionstyle-bd.com/upload/service/1656924196.jpg"
       ],
-      "category": ["Women"],
+      "category": ["Men", "Women"],
       "colors": ["Pink", "Gray", "Beige"],
       "sizes": ["Small", "Medium", "Large"]
     },

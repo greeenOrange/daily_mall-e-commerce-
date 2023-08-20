@@ -6,8 +6,9 @@ function Products() {
     const [products, setProducts] = useState([]);
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(true);
-    const data = [...products]
-    const sliceData = data.slice(0, 12)
+    console.log(products);
+    // const data = [...products]
+    // const sliceData = data.slice(0, 12)
     
     useEffect(() => {
         fetch('https://fakestoreapi.com/products')
@@ -38,8 +39,8 @@ function Products() {
                         <span>Error! Task failed successfully.</span>
                       </div>
                     }
-                    {sliceData &&
-                        sliceData.map((product, index) => (
+                    {products &&
+                        products.map((product, index) => (
                             <Product 
                             key={index}
                             product={product}

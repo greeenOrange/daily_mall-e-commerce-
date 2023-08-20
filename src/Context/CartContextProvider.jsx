@@ -58,7 +58,9 @@ const cartReducer = (state, action) => {
       return state;
 
     case "REMOVE_ITEM":
-      const newItemsRemove = state.selectedItems.filter((item) => item.id !== action.payload.id);
+      console.log("REMOVE_ITEM action triggered with payload:", action.payload);
+      const newItemsRemove = state.selectedItems.filter((item) => item?.id !== action.payload.id);
+      console.log("New selectedItems array after removal:", newItemsRemove);
       return {
         ...state,
         selectedItems: newItemsRemove,

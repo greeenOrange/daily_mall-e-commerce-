@@ -4,6 +4,7 @@ export const ProductsContext = createContext();
 
 export function ProductsContextProvider(props) {
     const [products, setProducts] = useState([]);
+    console.log(products);
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(true);
 

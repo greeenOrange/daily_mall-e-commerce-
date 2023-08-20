@@ -6,11 +6,11 @@ import { CartContext } from '../../../Context/CartContextProvider';
 import './Product.css'
 import { shorten } from '../../../Helpers/function';
 import { toast } from 'react-toastify';
-import Rating from 'react-rating';
+// import Rating from 'react-rating';
 
 const Product = ({ product }) => {
     const { dispatch } = useContext(CartContext);
-    const { title, price, id, image, rating } = product;
+    const { title, price, id, image, } = product;
 
 
     const handleAddTOCart = (product) => {
@@ -27,13 +27,13 @@ const Product = ({ product }) => {
                 </h3>
                 <div className="card_rating_price">
                     <div className="rating">
-                        <Rating
+                        {/* <Rating
                             readonly
                             className="text-yellow-500"
                             initialRating={rating?.rate}
                             emptySymbol="fa fa-star-o"
                             fullSymbol="fa fa-star"
-                        />
+                        /> */}
                     </div>
                     <div className="card_price">
                         <h6 className="strikeout">$40</h6>

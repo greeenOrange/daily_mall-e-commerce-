@@ -10,7 +10,8 @@ import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
 function ShoppingCart() {
   const { state, dispatch } = useContext(CartContext);
   const [promoCode, setPromoCode] = useState("");
-  const [openModal, setOpenModal] = useState(false)
+  const [openModal, setOpenModal] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
   const [deliveryDate, setDeliveryDate] = useState(() => {
     const current = new Date();
@@ -19,19 +20,22 @@ function ShoppingCart() {
 
   });
 
-  const handleOpenModal = () => {
+  const handleOpenModal = (pd) => {
+      setSelectedProduct(pd)
       setOpenModal(true);
   };
 
   const handleCloseModal = () => {
+    setSelectedProduct(null)
     setOpenModal(false);
   };
   
-  const handleConfirmRemove = (pd) => {
-    dispatch({ type: "REMOVE_ITEM", payload: pd })  
-    localStorage.removeItem(pd?.id);
-    toast.error('Item removed from cart') 
-    handleCloseModal();
+  const handleConfirmRemove = () => {
+    if (selectedProduct) {
+      dispatch({ type: "REMOVE_ITEM", payload: selectedProduct });
+      toast.error('Item removed from cart');
+      handleCloseModal();
+    }
   };
   const handlePromoCodeChange = (event) => {
     const newPromoCode = event.target.value;
@@ -59,13 +63,13 @@ function ShoppingCart() {
           <div className="grid grid-cols-1 gap-6 h-full">
             
             {state?.itemCounter >= 1 ?
-              <div className=''>
+              <div className='product_count_check'>
             <button
             onClick={() => dispatch({ type: "CLEAR" })}
             className="btn btn-error text-white text-lg w-full mb-4">Clear Cart</button>
-            {state?.selectedItems?.map((pd) => {
+            {state?.selectedItems?.map((pd, index) => {
               return (
-                <div key={pd?.name} className="shopping_card">
+                <div key={index} className="shopping_card">
                   <img src={pd?.image} alt="" className='primary_cart' />
                   <div className="shopping_cart">
                     <div className="shopping_cart_details">
@@ -106,7 +110,7 @@ function ShoppingCart() {
                       </div>
                     </div>
                     {/* dialog */}
-                    {!openModal && <button onClick={handleOpenModal} className="btn btn-error lg:w-1/2">Remove</button>}
+                    {!openModal && <button onClick={()=>handleOpenModal(pd)} className="btn btn-error lg:w-1/2">Remove</button>}
                     {openModal && <div className="modal_container">
                       <div className="modal_content">
                         <h2 className="text-3xl font-medium text-">Confirm delete</h2>
