@@ -8,7 +8,7 @@ import 'swiper/css/free-mode';
 import 'swiper/css/thumbs';
 import './ProductDetails.css';
 import { CartContext } from '../../../Context/CartContextProvider';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { IsInCart, checkQuantity } from '../../../Helpers/function';
 import { toast } from 'react-toastify';
 import Rating from 'react-rating';
@@ -76,19 +76,19 @@ const ProductDetails = () => {
                             className="mySwiper mt-4"
                         >
                             <SwiperSlide>
-                                <img alt="" src={details?.image} />
+                                <img alt="" src={details?.image} loading="lazy"/>
                             </SwiperSlide>
                             <SwiperSlide>
-                                <img alt="" src={details?.image} />
+                                <img alt="" src={details?.image} loading="lazy"/>
                             </SwiperSlide>
                             <SwiperSlide>
-                                <img alt="" src={details?.image} />
+                                <img alt="" src={details?.image} loading="lazy"/>
                             </SwiperSlide>
                             <SwiperSlide>
-                                <img alt="" src={details?.image} />
+                                <img alt="" src={details?.image} loading="lazy"/>
                             </SwiperSlide>
                             <SwiperSlide>
-                                <img alt="" src={details?.image} />
+                                <img alt="" src={details?.image} loading="lazy"/>
                             </SwiperSlide>
                         </Swiper>
                     </div>
@@ -152,7 +152,8 @@ const ProductDetails = () => {
                         <div className="clear_section">
                             <h5 className="clear_text">Clear Selection</h5>
                             <div className="button_group">
-                                <button className="buy_now">Buy Now</button>
+                                <Link onClick={() =>  handleAddTOCart(details)}
+                                to="/cart" className="buy_now">Buy Now</Link>
                                 { !IsInCart(state, details.id) ?
                                 <button
                                     onClick={() =>  handleAddTOCart(details)}
@@ -169,7 +170,7 @@ const ProductDetails = () => {
                     </div>
 
                 </div>
-                <div className="product_overview my-5">
+                <div className="product_overview mt-5">
                     <ul className="tab_list">
                         <li
                             className={`tabs ${getActiveClass(1, "active_tabs")}`}

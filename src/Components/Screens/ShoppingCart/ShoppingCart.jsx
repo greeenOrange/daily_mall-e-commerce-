@@ -70,7 +70,7 @@ function ShoppingCart() {
             {state?.selectedItems?.map((pd, index) => {
               return (
                 <div key={index} className="shopping_card">
-                  <img src={pd?.image} alt="" className='primary_cart' />
+                  <img src={pd?.image} alt="" className='primary_cart' loading="lazy"/>
                   <div className="shopping_cart">
                     <div className="shopping_cart_details">
                       <div className="cart_disc">
@@ -148,7 +148,7 @@ function ShoppingCart() {
                 placeholder="Enter promo code: DISCOUNT10"
                 className="input input-bordered lg:w-full"
               />
-              <button onClick={handleApplyPromo} className="apply_btn btn text-lg">Apply</button>
+              <button onClick={handleApplyPromo} className="apply_btn text-lg">Apply</button>
             </div>
             </div>
             <p>10% Discount</p>
@@ -162,8 +162,8 @@ function ShoppingCart() {
               <div className="shopping_group_btn">
                 <button
                   onClick={handleCheckOut}
-                  className="checkout shopping_cart_btn btn w-full">Checkout</button>
-                <Link to='/' className="shopping_cart_btn continue_btn btn w-full">Continue shopping</Link>
+                  className="checkout shopping_cart_btn w-full">Checkout</button>
+                <Link to='/' className="shopping_cart_btn continue_btn w-full">Continue shopping</Link>
               </div>
             </div>
           </div>

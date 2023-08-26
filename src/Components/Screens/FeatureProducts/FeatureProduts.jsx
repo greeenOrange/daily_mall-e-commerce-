@@ -34,7 +34,7 @@ function FeatureProduts({ searchQuery }) {
         return filteredItems.map((product, index) => (
             <div key={index} className="primary_card">
                 <Link to={`/productdetails/${product?.id}`}>
-                    <img src={product?.image} alt="" className="primary_img" />
+                    <img src={product?.image} alt="" className="primary_img" loading="lazy"/>
                 </Link>
                 <div className="primary_card_body">
                     <h3 className="card_title">{product?.title}</h3>

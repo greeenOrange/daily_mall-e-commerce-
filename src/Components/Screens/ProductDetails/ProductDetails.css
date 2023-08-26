@@ -11,8 +11,17 @@
 .product_details_wrapper .swiper-thumbs {
     margin-top: 2rem;
 }
+.product_details .mySwiper2{
+    width: 100%;
+    height: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.product_details .swiper-wrapper{
+    height: auto;
+}
 
-.product_details_wrapper .swiper-slide-thumb-active .swiper {
+.product_details_wrapper .swiper-slide-thumb-active .swiper{
     width: 100%;
     height: 100%;
 }
@@ -58,7 +67,7 @@
 
 .swiper {
     width: 100%;
-    height: 300px;
+    height: 100%;
     margin-left: auto;
     margin-right: auto;
 }

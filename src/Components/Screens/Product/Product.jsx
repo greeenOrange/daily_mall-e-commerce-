@@ -20,20 +20,13 @@ const Product = ({ product }) => {
     return (
         <div className="primary_card">
             <Link to={`/productdetails/${id}`}>
-                <img src={image} alt="" className="primary_img" />
+                <img src={image} alt="" className="primary_img" loading="lazy"/>
             </Link>
             <div className="primary_card_body">
                 <h3 className="card_title">{shorten(title)}
                 </h3>
                 <div className="card_rating_price">
                     <div className="rating">
-                        {/* <Rating
-                            readonly
-                            className="text-yellow-500"
-                            initialRating={rating?.rate}
-                            emptySymbol="fa fa-star-o"
-                            fullSymbol="fa fa-star"
-                        /> */}
                     </div>
                     <div className="card_price">
                         <h6 className="strikeout">$40</h6>

@@ -12,6 +12,7 @@ import Wishlist from './Screens/Wishlist/Wishlist';
 import { ToastContainer } from 'react-toastify';
 import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
+import { AnimatePresence } from "framer-motion"
 import Footer from './Partials/Footer/Footer';
 
 function App() {
@@ -45,13 +46,14 @@ function App() {
             <Route path="/productdetails/:id" element={<ProductDetails />} />
             <Route path="/shops" element={<FeatureProduts 
             searchQuery={searchQuery}
-            />} 
+            />}
             />
             <Route path="/wishlist" element={<Wishlist />} />
             <Route path="/cart" element={<ShoppingCart />} />
           </Routes>
           <Footer />
           <ToastContainer />
+   
         </BrowserRouter>
       </CartContextProvider>
     </ProductsContextProvider>
