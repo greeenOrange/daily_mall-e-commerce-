@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faHeart } from '@fortawesome/free-regular-svg-icons'
 import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/thumbs';
@@ -161,9 +161,12 @@ const ProductDetails = () => {
                                     <button
                                     className="btn btn-disabled" tabIndex="-1" role="button" aria-disabled="true">Add To Cart</button>
                                 }
-                                 <button
-                               onClick={() => handleAddTOWishList(details)}
-                                className="add_favourite"><FontAwesomeIcon icon={faHeart} /></button>
+                                {details &&
+                                    <button
+                                    onClick={() => handleAddTOWishList(details)}
+                                     className="add_favourite"><FontAwesomeIcon icon={faHeart} /></button>
+                                }
+                                 
                             </div>
                         </div>
 

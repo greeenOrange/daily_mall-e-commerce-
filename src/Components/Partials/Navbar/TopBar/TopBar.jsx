@@ -17,8 +17,6 @@ function TopBar({colorTheme, setTheme, darkSide,
             <ul className="menu menu-horizontal px-1">
             <Switcher colorTheme={colorTheme} setTheme={setTheme} darkSide={darkSide} 
           setDarkSide={setDarkSide}/>
-            {/* <button className="btn"><FontAwesomeIcon icon={faMoon} /></button>
-            <button className="btn"><FontAwesomeIcon icon={faSun} /></button> */}
               <li>
                 <details>
                   <summary className="text-black dark:text-white">
